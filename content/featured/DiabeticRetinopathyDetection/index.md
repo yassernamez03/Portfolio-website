@@ -12,7 +12,6 @@ tech:
   - OpenCV
   - MongoDB
   - UNet
-  - EfficientNetB4
 company: 'Project'
 showInProjects: true
 ---
