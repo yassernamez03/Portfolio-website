@@ -8,8 +8,7 @@ tech:
   - Python
   - Flask
   - MongoDB
-  - Groq
-  - Tailwind CSS
+  - Tailwind
   - JavaScript
 company: 'Project'
 showInProjects: true
