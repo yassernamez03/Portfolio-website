@@ -14,6 +14,14 @@ module.exports = {
       name: 'YouTube',
       url: 'https://www.youtube.com/@mighty_programmer',
     },
+    {
+      name: 'Twitter',
+      url: 'https://x.com/NamezYasse4803',
+    },
+    {
+      name: 'Medium',
+      url: 'https://medium.com/@yasser.namez',
+    },
   ],
 
   navLinks: [
