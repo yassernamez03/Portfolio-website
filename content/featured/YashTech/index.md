@@ -1,5 +1,5 @@
 ---
-date: '1'
+date: '2025-05-01'
 title: 'Enterprise ERP Platform'
 cover: './yash.png'
 github: 'https://github.com/yassernamez03/Enterprise-Resource-Planning-Spring-Boot-Application'

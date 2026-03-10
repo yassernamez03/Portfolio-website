@@ -70,22 +70,18 @@ const Hero = () => {
 
       <p>
         I build scalable full-stack applications and production-ready AI integrations using{' '}
+        <a href="https://fastapi.tiangolo.com">FastAPI</a>,{' '}
         <a href="https://spring.io/projects/spring-boot">Spring Boot</a>,{' '}
-        <a href="https://react.dev">React</a>,{' '}
-        <a href="https://fastapi.tiangolo.com">FastAPI</a>, and{' '}
+        <a href="https://react.dev">React</a>, and{' '}
         <a href="https://www.postgresql.org">PostgreSQL</a>.
       </p>
 
 
-      <p>
-        My work includes ERP platforms serving 50+ users, async report pipelines with Celery/Redis,
-        and medical imaging APIs delivering 92% model accuracy.
-      </p>
 
       <p>
-        On <a href="https://github.com/yassernamez03">GitHub</a>, I maintain 50+ public repositories,
-        contribute actively across AI, security, and full-stack projects, and keep shipping production-grade
-        engineering work.
+        On <a href="https://github.com/yassernamez03">GitHub</a>, I maintain 50+ public
+        repositories, contribute actively across AI, security, and full-stack projects, and keep
+        shipping engineering work.
       </p>
     </>
   );

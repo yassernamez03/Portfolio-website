@@ -1,10 +1,10 @@
 ---
-date: '3'
+date: '2024-06-15'
 title: 'Medical Imaging REST API'
 cover: './flipkart.png'
 github: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
-external: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
-video: 'https://youtu.be/9ON0h4scqLo?si=PL5zu_qj-hUHPYRW'
+external: 'https://youtu.be/9ON0h4scqLo?si=ol8YckY3FSStuUso'
+video: 'https://youtu.be/9ON0h4scqLo?si=ol8YckY3FSStuUso'
 tech:
   - Flask
   - TensorFlow

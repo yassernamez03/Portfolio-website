@@ -1,6 +1,6 @@
 ---
-date: '2025-08-01'
-title: 'Analytics Web Application'
+date: '2026-03-10'
+title: 'AI Vulnerability Analysis Platform'
 github: 'https://github.com/yassernamez03/Security-Vulnerability-Analysis-Platform-Nautilus'
 external: 'https://github.com/yassernamez03/Security-Vulnerability-Analysis-Platform-Nautilus'
 tech:

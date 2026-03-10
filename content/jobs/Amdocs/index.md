@@ -1,5 +1,5 @@
 ---
-date: '2025-07-01'
+date: '2026-03-10'
 title: 'Software Engineer Intern'
 company: 'INEOS Cyberdefense'
 location: 'Casablanca, Morocco'

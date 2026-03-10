@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -247,24 +247,13 @@ const StyledProject = styled.li`
     position: relative;
     z-index: 1;
 
-    overflow: hidden;
-
     @media (max-width: 768px) {
       grid-column: 1 / -1;
       height: 100%;
       opacity: 0.25;
     }
 
-    &.is-previewing {
-      a:before,
-      .img {
-        background: transparent;
-        filter: none;
-      }
-    }
-
     a {
-      display: block;
       width: 100%;
       height: 100%;
       background-color: var(--green);
@@ -299,24 +288,6 @@ const StyledProject = styled.li`
       }
     }
 
-    .media-preview {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-    }
-
-    iframe,
-    video {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: var(--border-radius);
-      object-fit: cover;
-      background-color: var(--light-navy);
-    }
-
     .img {
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
@@ -333,49 +304,11 @@ const StyledProject = styled.li`
 `;
 
 const Featured = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
-
-  const getYouTubeEmbedUrl = url => {
-    if (!url) {
-      return null;
-    }
-
-    if (url.includes('youtube.com/embed')) {
-      const separator = url.includes('?') ? '&' : '?';
-      return `${url}${separator}autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1`;
-    }
-
-    if (url.includes('youtu.be/')) {
-      const id = url.split('youtu.be/')[1]?.split(/[?&]/)[0];
-      return id
-        ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${id}`
-        : null;
-    }
-
-    if (url.includes('youtube.com/watch')) {
-      const id = new URL(url).searchParams.get('v');
-      return id
-        ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${id}`
-        : null;
-    }
-
-    if (url.includes('youtube.com/shorts/')) {
-      const id = url.split('shorts/')[1]?.split(/[?&]/)[0];
-      return id
-        ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=${id}`
-        : null;
-    }
-
-    return null;
-  };
-
-  const isDirectVideo = url => /\.(mp4|webm|ogg)(\?.*)?$/i.test(url || '');
-
   const data = useStaticQuery(graphql`
     {
       featured: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
+        sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
           node {
@@ -389,7 +322,6 @@ const Featured = () => {
               tech
               github
               external
-              video
             }
             html
           }
@@ -422,10 +354,8 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, video } = frontmatter;
+            const { external, title, tech, github, cover } = frontmatter;
             const image = getImage(cover);
-            const youtubeEmbedUrl = getYouTubeEmbedUrl(video);
-            const showVideoPreview = hoveredProject === i && (youtubeEmbedUrl || isDirectVideo(video));
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -465,28 +395,10 @@ const Featured = () => {
                   </div>
                 </div>
 
-                <div
-                  className={`project-image ${showVideoPreview ? 'is-previewing' : ''}`}
-                  onMouseEnter={() => setHoveredProject(i)}
-                  onMouseLeave={() => setHoveredProject(null)}>
+                <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
-
-                  {showVideoPreview && (
-                    <div className="media-preview">
-                      {youtubeEmbedUrl ? (
-                        <iframe
-                          src={youtubeEmbedUrl}
-                          title={`${title} video demo`}
-                          allow="autoplay; encrypted-media; picture-in-picture"
-                          allowFullScreen
-                        />
-                      ) : (
-                        <video src={video} autoPlay muted loop playsInline preload="metadata" />
-                      )}
-                    </div>
-                  )}
                 </div>
               </StyledProject>
             );
