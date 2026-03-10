@@ -1,6 +1,6 @@
 ---
 date: '2026-03-10'
-title: 'Security Vulnerability Analysis Platform'
+title: 'Security Vulnerability Analysis'
 cover: './idfc.png'
 github: 'https://github.com/yassernamez03/Security-Vulnerability-Analysis-Platform-Nautilus'
 external: 'https://youtu.be/bBSic0XUKp0?si=e9b_BAoA6xS-K2yy'
