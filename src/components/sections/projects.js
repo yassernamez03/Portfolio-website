@@ -6,6 +6,7 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import TechBadge from '@components/TechBadge';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -146,21 +147,16 @@ const StyledProject = styled.li`
 
   .project-tech-list {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-grow: 1;
     flex-wrap: wrap;
+    gap: 6px;
     padding: 0;
     margin: 20px 0 0 0;
     list-style: none;
 
     li {
-      font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
-      line-height: 1.75;
-
-      &:not(:last-of-type) {
-        margin-right: 15px;
-      }
+      margin: 0;
     }
   }
 `;
@@ -254,7 +250,7 @@ const Projects = () => {
           {tech && (
             <ul className="project-tech-list">
               {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
+                <li key={i}><TechBadge name={tech} /></li>
               ))}
             </ul>
           )}

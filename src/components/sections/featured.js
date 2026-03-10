@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import TechBadge from '@components/TechBadge';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -184,6 +185,7 @@ const StyledProject = styled.li`
   .project-tech-list {
     display: flex;
     flex-wrap: wrap;
+    gap: 8px;
     position: relative;
     z-index: 2;
     margin: 25px 0 10px;
@@ -191,20 +193,11 @@ const StyledProject = styled.li`
     list-style: none;
 
     li {
-      margin: 0 20px 5px 0;
-      color: var(--light-slate);
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
-      white-space: nowrap;
+      margin: 0;
     }
 
     @media (max-width: 768px) {
       margin: 10px 0;
-
-      li {
-        margin: 0 10px 5px 0;
-        color: var(--lightest-slate);
-      }
     }
   }
 
@@ -375,7 +368,7 @@ const Featured = () => {
                     {tech.length && (
                       <ul className="project-tech-list">
                         {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
+                          <li key={i}><TechBadge name={tech} /></li>
                         ))}
                       </ul>
                     )}
