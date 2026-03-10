@@ -61,27 +61,14 @@ const Hero = () => {
 
   const one = <h1>Hello, my name is</h1>;
   const two = <h2 className="big-heading">Yasser Namez</h2>;
-  const three = <h3 className="medium-heading">Software Engineer | Full Stack &amp; AI/ML Applications</h3>;
+  const three = <h3 className="medium-heading">Computer Science student at ENSET</h3>;
   const four = (
     <>
       <p>
-        <b>Engineering student with real production internship impact.</b>
-      </p>
-
-      <p>
-        I build scalable full-stack applications and production-ready AI integrations using{' '}
-        <a href="https://fastapi.tiangolo.com">FastAPI</a>,{' '}
-        <a href="https://spring.io/projects/spring-boot">Spring Boot</a>,{' '}
-        <a href="https://react.dev">React</a>, and{' '}
-        <a href="https://www.postgresql.org">PostgreSQL</a>.
-      </p>
-
-
-
-      <p>
-        On <a href="https://github.com/yassernamez03">GitHub</a>, I maintain 50+ public
-        repositories, contribute actively across AI, security, and full-stack projects, and keep
-        shipping engineering work.
+        Welcome to my little corner of the internet! Here I chronicle my journey and share insights
+        and ideas that have enriched my learning experience. This website serves as a hub for my
+        portfolio of projects, my reflections on the world around me, and the little gems I find on
+        the internet.
       </p>
     </>
   );
