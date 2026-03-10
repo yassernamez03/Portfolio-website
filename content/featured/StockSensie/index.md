@@ -9,7 +9,6 @@ tech:
   - Python
   - Machine Learning
   - Time Series
-  - Data Visualization
 ---
 
 AI-powered stock trend prediction project using historical data and machine learning models to generate actionable market signals.
