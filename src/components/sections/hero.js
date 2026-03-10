@@ -65,10 +65,12 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        Welcome to my little corner of the internet! Here I chronicle my journey and share insights
-        and ideas that have enriched my learning experience. This website serves as a hub for my
-        portfolio of projects, my reflections on the world around me, and the little gems I find on
-        the internet.
+        Welcome. I&apos;m Yasser Namez, and I build things to understand them better.
+      </p>
+      <p>
+        Explore my portfolio of projects, read my reflections on what I&apos;m learning, and
+        discover the ideas that keep me curious. Here I chronicle my journey and share insights and
+        the little gems I find on the internet.
       </p>
     </>
   );
