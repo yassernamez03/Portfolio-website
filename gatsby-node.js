@@ -6,6 +6,72 @@
 
 const path = require('path');
 const _ = require('lodash');
+const https = require('https');
+const http = require('http');
+
+// ─── Medium RSS helpers ───────────────────────────────────────────────────────
+
+function fetchURL(url, redirects = 0) {
+  return new Promise((resolve, reject) => {
+    if (redirects > 5) return reject(new Error('Too many redirects'));
+    const protocol = url.startsWith('https') ? https : http;
+    const req = protocol.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return resolve(fetchURL(res.headers.location, redirects + 1));
+      }
+      let data = '';
+      res.on('data', chunk => (data += chunk));
+      res.on('end', () => resolve(data));
+      res.on('error', reject);
+    });
+    req.on('error', reject);
+  });
+}
+
+function extractCDATA(str) {
+  const m = str.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+  return m ? m[1].trim() : str.trim();
+}
+
+function parseRSSItems(xml) {
+  const items = [];
+  const itemRe = /<item>([\s\S]*?)<\/item>/g;
+  let m;
+  while ((m = itemRe.exec(xml)) !== null) {
+    const raw = m[1];
+    const titleRaw = raw.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
+    const title = extractCDATA(titleRaw);
+    const link =
+      raw.match(/<link>([\s\S]*?)<\/link>/)?.[1]?.trim() ??
+      raw.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.[1]?.trim() ??
+      '';
+    const pubDate = raw.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1]?.trim() ?? '';
+    const encoded =
+      raw.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/)?.[1] ?? '';
+    const thumbnail =
+      encoded.match(/<img[^>]+src="([^"]+)"/)?.[1] ??
+      raw.match(/<description>[\s\S]*?<img[^>]+src="([^"]+)"/)?.[1] ??
+      '';
+    const subtitle = extractCDATA(
+      raw.match(/<description>([\s\S]*?)<\/description>/)?.[1] ?? '',
+    )
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .trim()
+      .substring(0, 220);
+
+    if (title && link) {
+      items.push({ title, link, pubDate, thumbnail, subtitle });
+    }
+  }
+  return items;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 // Prevent frontmatter type inference conflicts (e.g., `cover` as String vs File)
 exports.createSchemaCustomization = ({ actions }) => {
@@ -14,7 +80,35 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatter {
       cover: File @fileByRelativePath
     }
+    type MediumPost implements Node {
+      title: String
+      link: String
+      pubDate: String
+      thumbnail: String
+      subtitle: String
+    }
   `);
+};
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, reporter }) => {
+  const { createNode } = actions;
+  try {
+    const xml = await fetchURL('https://medium.com/feed/@yasser.namez');
+    const posts = parseRSSItems(xml);
+    posts.forEach(post => {
+      createNode({
+        ...post,
+        id: createNodeId(`MediumPost-${post.link}`),
+        internal: {
+          type: 'MediumPost',
+          contentDigest: createContentDigest(post),
+        },
+      });
+    });
+    reporter.info(`[Medium] Fetched ${posts.length} articles`);
+  } catch (e) {
+    reporter.warn(`[Medium] Could not fetch RSS feed: ${e.message}`);
+  }
 };
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
