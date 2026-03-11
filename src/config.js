@@ -22,6 +22,10 @@ module.exports = {
       name: 'Medium',
       url: 'https://medium.com/@yasser.namez',
     },
+    {
+      name: 'Letterboxd',
+      url: 'https://letterboxd.com/mightymouse007/',
+    },
   ],
 
   navLinks: [
