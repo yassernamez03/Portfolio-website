@@ -4,7 +4,7 @@ title: 'Software Engineer Intern - ML Integration'
 company: 'Centre Hospitalier Universitaire Mohammed VI'
 location: 'Oujda, Morocco'
 range: '04/2024 - 06/2024'
-url: 'https://www.chumohammed6.ma'
+url: 'http://www.chuoujda.ma/'
 ---
 
 - Built and deployed a Flask REST API serving ML model predictions for 100+ daily image analyses

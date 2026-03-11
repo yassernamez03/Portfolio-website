@@ -4,7 +4,7 @@ title: 'Software Engineer Intern'
 company: 'INEOS Cyberdefense'
 location: 'Casablanca, Morocco'
 range: '07/2025 - 08/2025'
-url: 'https://ineoscyberdefense.com'
+url: 'https://www.cyberforces.net/'
 ---
 
 - Built a full-stack web application with FastAPI backend and React frontend, integrating 4 third-party REST APIs

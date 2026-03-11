@@ -1,12 +1,11 @@
 const config = require('./src/config');
 
 module.exports = {
-  pathPrefix: '/Portfolio-website',
   siteMetadata: {
     title: 'Yasser Namez',
     description:
       'Software Engineer focused on full-stack and AI/ML applications with hands-on internship experience in production systems.',
-    siteUrl: 'https://yassernamez03.github.io', // No trailing slash allowed!
+    siteUrl: 'https://yassernamez.tech', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@yassernamez03',
   },
