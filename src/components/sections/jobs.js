@@ -22,6 +22,12 @@ const StyledJobsSection = styled.section`
       min-height: 340px;
     }
   }
+
+  @media (max-width: 480px) {
+    .numbered-heading {
+      font-size: 26px;
+    }
+  }
 `;
 
 const StyledTabList = styled.div`
@@ -39,30 +45,16 @@ const StyledTabList = styled.div`
     padding-left: 50px;
     margin-left: -50px;
     margin-bottom: 30px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   @media (max-width: 480px) {
     width: calc(100% + 50px);
     padding-left: 25px;
     margin-left: -25px;
-  }
-
-  li {
-    &:first-of-type {
-      @media (max-width: 600px) {
-        margin-left: 50px;
-      }
-      @media (max-width: 480px) {
-        margin-left: 25px;
-      }
-    }
-    &:last-of-type {
-      @media (max-width: 600px) {
-        padding-right: 50px;
-      }
-      @media (max-width: 480px) {
-        padding-right: 25px;
-      }
-    }
   }
 `;
 
@@ -86,11 +78,17 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
+    width: var(--tab-width);
+    min-width: var(--tab-width);
+    max-width: var(--tab-width);
     padding: 0 15px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
     text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
+    font-size: var(--fz-xxs);
   }
 
   &:hover,
@@ -115,14 +113,11 @@ const StyledHighlight = styled.div`
   @media (max-width: 600px) {
     top: auto;
     bottom: 0;
-    width: 100%;
+    width: var(--tab-width);
     max-width: var(--tab-width);
     height: 2px;
-    margin-left: 50px;
+    margin-left: 0;
     transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
   }
 `;
 
@@ -141,8 +136,25 @@ const StyledTabPanel = styled.div`
   height: auto;
   padding: 10px 5px;
 
+  @media (max-width: 480px) {
+    padding: 10px 0;
+  }
+
   ul {
     ${({ theme }) => theme.mixins.fancyList};
+
+    @media (max-width: 480px) {
+      font-size: var(--fz-md);
+
+      li {
+        padding-left: 20px;
+        margin-bottom: 8px;
+
+        &:before {
+          left: 0;
+        }
+      }
+    }
   }
 
   h3 {
@@ -150,6 +162,15 @@ const StyledTabPanel = styled.div`
     font-size: var(--fz-xxl);
     font-weight: 500;
     line-height: 1.3;
+
+    @media (max-width: 600px) {
+      font-size: var(--fz-xl);
+    }
+    @media (max-width: 480px) {
+      font-size: var(--fz-lg);
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     .company {
       color: var(--green);
