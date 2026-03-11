@@ -19,7 +19,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b gh-pages",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -57,6 +57,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-is": "^19.2.4",
     "react-transition-group": "^4.3.0",
     "scrollreveal": "^4.0.5",
     "styled-components": "^5.3.0"
@@ -73,6 +74,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "gatsby-remark-code-titles": "^1.1.0",
+    "gh-pages": "^6.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.1.2",
     "prettier": "^2.2.1"
