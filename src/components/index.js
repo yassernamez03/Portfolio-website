@@ -12,6 +12,7 @@ export { default as Hero } from './sections/hero';
 export { default as About } from './sections/about';
 export { default as Jobs } from './sections/jobs';
 export { default as Writing } from './sections/writing';
+export { default as Volunteering } from './sections/volunteering';
 export { default as Featured } from './sections/featured';
 export { default as Projects } from './sections/projects';
 export { default as Certifications } from './sections/certifications';
