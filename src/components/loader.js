@@ -46,17 +46,11 @@ const Loader = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: '#logo path',
+        targets: '#logo rect, #logo polygon',
         delay: 300,
-        duration: 1500,
-        easing: 'easeInOutQuart',
-        strokeDashoffset: [anime.setDashoffset, 0],
-      })
-      .add({
-        targets: '#logo #B',
         duration: 700,
         easing: 'easeInOutQuart',
-        opacity: 1,
+        opacity: [0, 1],
       })
       .add({
         targets: '#logo',

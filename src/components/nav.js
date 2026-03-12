@@ -91,6 +91,7 @@ const StyledNav = styled.nav`
           @media (prefers-reduced-motion: no-preference) {
             transition: var(--transition);
           }
+          rect,
           polygon {
             fill: var(--navy);
           }
