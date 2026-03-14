@@ -7,6 +7,7 @@ import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import TechBadge from '@components/TechBadge';
+import techLinks from '@utils/techLinks';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -367,9 +368,25 @@ const Featured = () => {
 
                     {tech.length && (
                       <ul className="project-tech-list">
-                        {tech.map((tech, i) => (
-                          <li key={i}><TechBadge name={tech} /></li>
-                        ))}
+                        {tech.map((tech, i) => {
+                          const techUrl = techLinks[tech];
+
+                          return (
+                            <li key={i}>
+                              {techUrl ? (
+                                <a
+                                  href={techUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`${tech} website`}>
+                                  <TechBadge name={tech} />
+                                </a>
+                              ) : (
+                                <TechBadge name={tech} />
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     )}
 
