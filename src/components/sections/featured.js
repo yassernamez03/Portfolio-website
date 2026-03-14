@@ -20,7 +20,7 @@ const StyledProjectsGrid = styled.ul`
 const StyledProject = styled.li`
   position: relative;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 12px;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
 
@@ -46,7 +46,7 @@ const StyledProject = styled.li`
       text-align: right;
 
       @media (max-width: 1080px) {
-        grid-column: 5 / -1;
+        grid-column: 7 / -1;
       }
       @media (max-width: 768px) {
         grid-column: 1 / -1;
@@ -84,7 +84,7 @@ const StyledProject = styled.li`
       }
     }
     .project-image {
-      grid-column: 1 / 8;
+      grid-column: 1 / 7;
 
       @media (max-width: 768px) {
         grid-column: 1 / -1;
@@ -98,7 +98,7 @@ const StyledProject = styled.li`
     grid-row: 1 / -1;
 
     @media (max-width: 1080px) {
-      grid-column: 1 / 9;
+      grid-column: 1 / 7;
     }
 
     @media (max-width: 768px) {
@@ -235,7 +235,7 @@ const StyledProject = styled.li`
 
   .project-image {
     ${({ theme }) => theme.mixins.boxShadow};
-    grid-column: 6 / -1;
+    grid-column: 7 / -1;
     grid-row: 1 / -1;
     position: relative;
     z-index: 1;
