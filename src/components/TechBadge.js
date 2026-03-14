@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import techIconMap from '@utils/techIcons';
+import techLinks from '@utils/techLinks';
 
 const StyledBadge = styled.span`
   display: inline-flex;
@@ -14,6 +15,13 @@ const StyledBadge = styled.span`
   border-radius: 20px;
   padding: 4px 10px;
   white-space: nowrap;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--green);
+    border-color: var(--green);
+  }
 
   img {
     width: 13px;
@@ -24,8 +32,16 @@ const StyledBadge = styled.span`
 
 const TechBadge = ({ name }) => {
   const slug = techIconMap[name];
+  const website = techLinks[name];
+  const WrapperTag = website ? 'a' : 'span';
+
   return (
-    <StyledBadge>
+    <StyledBadge
+      as={WrapperTag}
+      href={website || undefined}
+      target={website ? '_blank' : undefined}
+      rel={website ? 'noopener noreferrer' : undefined}
+      aria-label={website ? `${name} website` : undefined}>
       {slug && (
         <img
           src={`https://cdn.simpleicons.org/${slug}`}
