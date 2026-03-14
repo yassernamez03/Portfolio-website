@@ -5,21 +5,30 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledResumeSection = styled.section`
+  @media (prefers-reduced-motion: no-preference) {
+    .resume-card:hover,
+    .resume-card:focus-within {
+      transform: translateY(-5px);
+    }
+  }
+
   .resume-card {
+    ${({ theme }) => theme.mixins.boxShadow};
+    display: flex;
+    flex-direction: column;
     position: relative;
     max-width: 760px;
-    border: 1px solid var(--lightest-navy);
-    background: linear-gradient(140deg, rgba(100, 255, 218, 0.08), rgba(2, 12, 27, 0.92) 40%);
+    background-color: var(--light-navy);
     border-radius: var(--border-radius);
-    padding: 36px;
-    box-shadow: 0 20px 40px -25px rgba(2, 12, 27, 0.9);
+    padding: 2rem 1.75rem;
+    transition: var(--transition);
 
     @media (max-width: 768px) {
-      padding: 28px;
+      padding: 1.75rem 1.5rem;
     }
 
     @media (max-width: 480px) {
-      padding: 22px;
+      padding: 1.5rem 1.25rem;
     }
   }
 
@@ -41,13 +50,14 @@ const StyledResumeSection = styled.section`
 
   .resume-btn.secondary {
     background-color: transparent;
-    color: var(--lightest-slate);
-    border-color: var(--lightest-slate);
+    color: var(--light-slate);
+    border-color: var(--light-slate);
 
     &:hover,
     &:focus {
-      background-color: rgba(204, 214, 246, 0.08);
-      color: var(--lightest-slate);
+      background-color: var(--green-tint);
+      color: var(--green-secondary);
+      border-color: var(--green-secondary);
     }
   }
 `;
