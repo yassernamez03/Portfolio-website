@@ -5,10 +5,9 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledResumeSection = styled.section`
-  max-width: 760px;
-
   .resume-card {
     position: relative;
+    max-width: 760px;
     border: 1px solid var(--lightest-navy);
     background: linear-gradient(140deg, rgba(100, 255, 218, 0.08), rgba(2, 12, 27, 0.92) 40%);
     border-radius: var(--border-radius);
@@ -22,11 +21,6 @@ const StyledResumeSection = styled.section`
     @media (max-width: 480px) {
       padding: 22px;
     }
-  }
-
-  h3 {
-    margin-bottom: 14px;
-    font-size: clamp(24px, 3vw, 32px);
   }
 
   p {
@@ -75,8 +69,6 @@ const Resume = () => {
       <h2 className="numbered-heading">Resume</h2>
 
       <div className="resume-card">
-        <h3>Experience Snapshot</h3>
-
         <p>
           Download my latest resume to see a concise overview of my software engineering internships,
           full-stack and AI projects, and technical skills across backend, frontend, and cloud tooling.
