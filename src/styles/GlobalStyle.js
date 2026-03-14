@@ -8,6 +8,30 @@ const GlobalStyle = createGlobalStyle`
   ${fonts};
   ${variables};
 
+  @keyframes ambientFloat {
+    0% {
+      transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(2%, 2%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(-1%, 3%, 0) scale(1.02);
+    }
+  }
+
+  @keyframes ambientDrift {
+    0% {
+      transform: translate3d(1%, -2%, 0) scale(1.02);
+    }
+    50% {
+      transform: translate3d(-3%, 1%, 0) scale(0.98);
+    }
+    100% {
+      transform: translate3d(2%, 2%, 0) scale(1.03);
+    }
+  }
+
   html {
     box-sizing: border-box;
     width: 100%;
@@ -69,6 +93,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    position: relative;
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
@@ -102,6 +127,50 @@ const GlobalStyle = createGlobalStyle`
         user-select: none;
       }
     }
+
+    &:before,
+    &:after {
+      content: '';
+      position: fixed;
+      inset: -20vmax;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    &:before {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(100, 255, 218, 0.2) 0%, rgba(100, 255, 218, 0) 34%),
+        radial-gradient(circle at 82% 16%, rgba(29, 78, 216, 0.28) 0%, rgba(29, 78, 216, 0) 36%),
+        radial-gradient(circle at 72% 74%, rgba(56, 189, 248, 0.14) 0%, rgba(56, 189, 248, 0) 40%),
+        radial-gradient(circle at 16% 78%, rgba(15, 23, 42, 0.42) 0%, rgba(15, 23, 42, 0) 45%);
+      filter: blur(28px) saturate(1.05);
+      animation: ambientFloat 22s ease-in-out infinite alternate;
+    }
+
+    &:after {
+      background:
+        linear-gradient(rgba(100, 255, 218, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 255, 218, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 55%);
+      background-size:
+        70px 70px,
+        70px 70px,
+        auto;
+      background-position:
+        -1px -1px,
+        -1px -1px,
+        center top;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25));
+      opacity: 0.5;
+      animation: ambientDrift 30s ease-in-out infinite alternate;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body:before,
+    body:after {
+      animation: none;
+    }
   }
 
   #root {
@@ -109,6 +178,8 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   main {

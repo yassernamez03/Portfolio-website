@@ -15,5 +15,6 @@ export { default as Writing } from './sections/writing';
 export { default as Volunteering } from './sections/volunteering';
 export { default as Featured } from './sections/featured';
 export { default as Projects } from './sections/projects';
+export { default as Resume } from './sections/resume';
 export { default as Certifications } from './sections/certifications';
 export { default as Contact } from './sections/contact';
