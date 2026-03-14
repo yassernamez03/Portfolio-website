@@ -100,7 +100,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: var(--navy);
-    color: var(--slate);
+    color: var(--lightest-slate);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
@@ -139,18 +139,18 @@ const GlobalStyle = createGlobalStyle`
 
     &:before {
       background:
-        radial-gradient(circle at 12% 18%, rgba(100, 255, 218, 0.2) 0%, rgba(100, 255, 218, 0) 34%),
-        radial-gradient(circle at 82% 16%, rgba(29, 78, 216, 0.28) 0%, rgba(29, 78, 216, 0) 36%),
-        radial-gradient(circle at 72% 74%, rgba(56, 189, 248, 0.14) 0%, rgba(56, 189, 248, 0) 40%),
-        radial-gradient(circle at 16% 78%, rgba(15, 23, 42, 0.42) 0%, rgba(15, 23, 42, 0) 45%);
+        radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.2) 0%, rgba(20, 184, 166, 0) 34%),
+        radial-gradient(circle at 82% 16%, rgba(45, 212, 191, 0.22) 0%, rgba(45, 212, 191, 0) 36%),
+        radial-gradient(circle at 72% 74%, rgba(20, 184, 166, 0.12) 0%, rgba(20, 184, 166, 0) 40%),
+        radial-gradient(circle at 16% 78%, rgba(11, 15, 16, 0.45) 0%, rgba(11, 15, 16, 0) 45%);
       filter: blur(28px) saturate(1.05);
       animation: ambientFloat 22s ease-in-out infinite alternate;
     }
 
     &:after {
       background:
-        linear-gradient(rgba(100, 255, 218, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(100, 255, 218, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(20, 184, 166, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 184, 166, 0.04) 1px, transparent 1px),
         radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 55%);
       background-size:
         70px 70px,
@@ -332,7 +332,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: var(--green-secondary);
     }
 
     &.inline-link {

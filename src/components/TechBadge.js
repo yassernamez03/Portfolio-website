@@ -19,8 +19,8 @@ const StyledBadge = styled.span`
 
   &:hover,
   &:focus {
-    color: var(--green);
-    border-color: var(--green);
+    color: var(--green-secondary);
+    border-color: var(--green-secondary);
   }
 
   img {
