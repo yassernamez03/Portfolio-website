@@ -79,6 +79,8 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(`
     type MarkdownRemarkFrontmatter {
       cover: File @fileByRelativePath
+      youtube: String
+      linkedin: String
     }
     type MediumPost implements Node {
       title: String

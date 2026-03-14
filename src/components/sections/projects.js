@@ -161,6 +161,24 @@ const StyledProject = styled.li`
   }
 `;
 
+const getLinkIconName = url => {
+  if (!url) {
+    return null;
+  }
+
+  const normalizedUrl = url.toLowerCase();
+
+  if (normalizedUrl.includes('youtube.com') || normalizedUrl.includes('youtu.be')) {
+    return 'YouTube';
+  }
+
+  if (normalizedUrl.includes('linkedin.com')) {
+    return 'Linkedin';
+  }
+
+  return 'External';
+};
+
 const Projects = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -178,6 +196,8 @@ const Projects = () => {
               tech
               github
               external
+              youtube
+              linkedin
             }
             html
           }
@@ -209,7 +229,13 @@ const Projects = () => {
 
   const projectInner = node => {
     const { frontmatter, html } = node;
-    const { github, external, title, tech } = frontmatter;
+    const { github, external, youtube, linkedin, title, tech } = frontmatter;
+
+    const externalIcon = getLinkIconName(external);
+    const youtubeLink = youtube || (externalIcon === 'YouTube' ? external : null);
+    const linkedinLink = linkedin || (externalIcon === 'Linkedin' ? external : null);
+    const externalLink = externalIcon === 'External' ? external : null;
+    const primaryLink = externalLink || youtubeLink || linkedinLink || github;
 
     return (
       <div className="project-inner">
@@ -224,9 +250,19 @@ const Projects = () => {
                   <Icon name="GitHub" />
                 </a>
               )}
-              {external && (
+              {youtubeLink && (
+                <a href={youtubeLink} aria-label="YouTube Demo Link" target="_blank" rel="noreferrer">
+                  <Icon name="YouTube" />
+                </a>
+              )}
+              {linkedinLink && (
+                <a href={linkedinLink} aria-label="LinkedIn Post Link" target="_blank" rel="noreferrer">
+                  <Icon name="Linkedin" />
+                </a>
+              )}
+              {externalLink && (
                 <a
-                  href={external}
+                  href={externalLink}
                   aria-label="External Link"
                   className="external"
                   target="_blank"
@@ -238,9 +274,13 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
+            {primaryLink ? (
+              <a href={primaryLink} target="_blank" rel="noreferrer">
+                {title}
+              </a>
+            ) : (
+              <span>{title}</span>
+            )}
           </h3>
 
           <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />

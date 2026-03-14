@@ -129,6 +129,24 @@ const StyledTableContainer = styled.div`
   }
 `;
 
+const getLinkIconName = url => {
+  if (!url) {
+    return null;
+  }
+
+  const normalizedUrl = url.toLowerCase();
+
+  if (normalizedUrl.includes('youtube.com') || normalizedUrl.includes('youtu.be')) {
+    return 'YouTube';
+  }
+
+  if (normalizedUrl.includes('linkedin.com')) {
+    return 'Linkedin';
+  }
+
+  return 'External';
+};
+
 const ArchivePage = ({ location, data }) => {
   const projects = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
@@ -174,10 +192,18 @@ const ArchivePage = ({ location, data }) => {
                     date,
                     github,
                     external,
+                    youtube,
+                    linkedin,
                     title,
                     tech,
                     company,
                   } = node.frontmatter;
+
+                  const externalIcon = getLinkIconName(external);
+                  const youtubeLink = youtube || (externalIcon === 'YouTube' ? external : null);
+                  const linkedinLink = linkedin || (externalIcon === 'Linkedin' ? external : null);
+                  const externalLink = externalIcon === 'External' ? external : null;
+
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
@@ -201,14 +227,36 @@ const ArchivePage = ({ location, data }) => {
 
                       <td className="links">
                         <div>
-                          {external && (
-                            <a href={external} aria-label="External Link">
-                              <Icon name="External" />
+                          {github && (
+                            <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
+                              <Icon name="GitHub" />
                             </a>
                           )}
-                          {github && (
-                            <a href={github} aria-label="GitHub Link">
-                              <Icon name="GitHub" />
+                          {youtubeLink && (
+                            <a
+                              href={youtubeLink}
+                              aria-label="YouTube Demo Link"
+                              target="_blank"
+                              rel="noreferrer">
+                              <Icon name="YouTube" />
+                            </a>
+                          )}
+                          {linkedinLink && (
+                            <a
+                              href={linkedinLink}
+                              aria-label="LinkedIn Post Link"
+                              target="_blank"
+                              rel="noreferrer">
+                              <Icon name="Linkedin" />
+                            </a>
+                          )}
+                          {externalLink && (
+                            <a
+                              href={externalLink}
+                              aria-label="External Link"
+                              target="_blank"
+                              rel="noreferrer">
+                              <Icon name="External" />
                             </a>
                           )}
                         </div>
@@ -244,6 +292,8 @@ export const pageQuery = graphql`
             tech
             github
             external
+            youtube
+            linkedin
             company
           }
           html

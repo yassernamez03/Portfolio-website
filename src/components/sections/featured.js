@@ -296,6 +296,24 @@ const StyledProject = styled.li`
   }
 `;
 
+const getLinkIconName = url => {
+  if (!url) {
+    return null;
+  }
+
+  const normalizedUrl = url.toLowerCase();
+
+  if (normalizedUrl.includes('youtube.com') || normalizedUrl.includes('youtu.be')) {
+    return 'YouTube';
+  }
+
+  if (normalizedUrl.includes('linkedin.com')) {
+    return 'Linkedin';
+  }
+
+  return 'External';
+};
+
 const Featured = () => {
   const data = useStaticQuery(graphql`
     {
@@ -315,6 +333,8 @@ const Featured = () => {
               tech
               github
               external
+              youtube
+              linkedin
             }
             html
           }
@@ -347,8 +367,13 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover } = frontmatter;
+            const { external, youtube, linkedin, title, tech, github, cover } = frontmatter;
             const image = getImage(cover);
+            const externalIcon = getLinkIconName(external);
+            const youtubeLink = youtube || (externalIcon === 'YouTube' ? external : null);
+            const linkedinLink = linkedin || (externalIcon === 'Linkedin' ? external : null);
+            const externalLink = externalIcon === 'External' ? external : null;
+            const primaryLink = externalLink || youtubeLink || linkedinLink || github || '#';
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -357,7 +382,7 @@ const Featured = () => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={external}>{title}</a>
+                      <a href={primaryLink}>{title}</a>
                     </h3>
 
                     <div
@@ -379,8 +404,18 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && (
-                        <a href={external} aria-label="External Link" className="external">
+                      {youtubeLink && (
+                        <a href={youtubeLink} aria-label="YouTube Demo Link">
+                          <Icon name="YouTube" />
+                        </a>
+                      )}
+                      {linkedinLink && (
+                        <a href={linkedinLink} aria-label="LinkedIn Post Link">
+                          <Icon name="Linkedin" />
+                        </a>
+                      )}
+                      {externalLink && (
+                        <a href={externalLink} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
                       )}
@@ -389,7 +424,7 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a href={primaryLink}>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
