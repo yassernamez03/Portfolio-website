@@ -2,23 +2,25 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    --dark-navy: #0b0f10;
-    --navy: #0b0f10;
-    --light-navy: #111827;
-    --lightest-navy: #111827;
-    --navy-shadow: rgba(11, 15, 16, 0.75);
-    --dark-slate: #9ca3af;
-    --slate: #9ca3af;
-    --light-slate: #9ca3af;
-    --lightest-slate: #e5e7eb;
-    --white: #e5e7eb;
-    --green: #14b8a6;
-    --green-secondary: #2dd4bf;
-    --green-tint: rgba(20, 184, 166, 0.15);
+    --dark-navy: #09090b;
+    --navy: #09090b;
+    --light-navy: #111113;
+    --lightest-navy: #1f1f23;
+    --navy-shadow: rgba(0, 0, 0, 0.4);
+    --dark-slate: #a1a1aa;
+    --slate: #c4c4cf;
+    --light-slate: #d4d4d8;
+    --lightest-slate: #f4f4f5;
+    --white: #ffffff;
+    --green: #10b981;
+    --green-secondary: #34d399;
+    --green-tint: rgba(16, 185, 129, 0.14);
     --pink: #f472b6;
     --blue: #60a5fa;
+    --border: rgba(255, 255, 255, 0.12);
+    --surface: rgba(17, 17, 19, 0.85);
 
-    --font-sans: 'Space Grotesk', 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
+    --font-sans: 'Inter', 'Calibre', 'Space Grotesk', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
@@ -26,12 +28,12 @@ const variables = css`
     --fz-xs: 13px;
     --fz-sm: 14px;
     --fz-md: 16px;
-    --fz-lg: 18px;
-    --fz-xl: 20px;
+    --fz-lg: 17px;
+    --fz-xl: 18px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
 
-    --border-radius: 4px;
+    --border-radius: 10px;
     --nav-height: 100px;
     --nav-scroll-height: 70px;
 
@@ -39,7 +41,7 @@ const variables = css`
     --tab-width: 120px;
 
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition: all 0.2s ease;
 
     --hamburger-width: 30px;
 

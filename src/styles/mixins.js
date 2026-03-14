@@ -72,12 +72,12 @@ const mixins = {
     &:after {
       content: '';
       display: block;
-      width: 0;
+      width: 100%;
       height: 1px;
       position: relative;
       bottom: 0.37em;
       background-color: var(--green-secondary);
-      opacity: 0.5;
+      opacity: 0.35;
       @media (prefers-reduced-motion: no-preference) {
         transition: var(--transition);
       }
@@ -133,12 +133,14 @@ const mixins = {
   `,
 
   boxShadow: css`
-    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 24px -16px var(--navy-shadow);
     transition: var(--transition);
 
     &:hover,
     &:focus-visible {
-      box-shadow: 0 20px 30px -15px var(--navy-shadow);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 28px -16px var(--navy-shadow);
     }
   `,
 

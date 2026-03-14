@@ -51,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Provide basic, default focus styles.*/
   :focus {
-    outline: 2px dashed var(--green);
+    outline: 2px solid var(--green);
     outline-offset: 3px;
   }
 
@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     focus.
   */
   :focus-visible {
-    outline: 2px dashed var(--green);
+    outline: 2px solid var(--green);
     outline-offset: 3px;
   }
 
@@ -103,7 +103,7 @@ const GlobalStyle = createGlobalStyle`
     color: var(--lightest-slate);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
-    line-height: 1.3;
+    line-height: 1.55;
 
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
@@ -185,15 +185,15 @@ const GlobalStyle = createGlobalStyle`
   main {
     margin: 0 auto;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1280px;
     min-height: 100vh;
-    padding: 200px 150px;
+    padding: 170px 120px;
 
     @media (max-width: 1080px) {
-      padding: 200px 100px;
+      padding: 160px 80px;
     }
     @media (max-width: 768px) {
-      padding: 150px 50px;
+      padding: 130px 36px;
     }
     @media (max-width: 480px) {
       padding: 125px 25px;
@@ -235,7 +235,7 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     margin: 0 0 10px 0;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--lightest-slate);
     line-height: 1.1;
   }
@@ -284,7 +284,7 @@ const GlobalStyle = createGlobalStyle`
       width: 300px;
       height: 1px;
       margin-left: 20px;
-      background-color: var(--lightest-navy);
+      background-color: var(--border);
 
       @media (max-width: 1080px) {
         width: 200px;
