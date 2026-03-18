@@ -11,3 +11,5 @@ url: 'https://www.cyberforces.net/'
 - Designed an AI-powered module using LangChain to automate structured recommendations from unstructured data
 - Developed an asynchronous report generation service with Celery and Redis
 - Containerized the application with Docker
+- Implemented modular backend services and frontend features that improved maintainability and simplified future feature additions
+- Structured API integration flows to normalize external data before analysis and reporting
