@@ -131,31 +131,37 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I am an engineering student based in Mohammedia, Morocco, with hands-on internship
-              experience building full-stack products and AI-enabled backend services.
+              I am a fourth-year Software and Information Systems Engineering student at ENSET
+              Mohammedia, with a strong interest in AI/ML and full-stack software engineering.
             </p>
 
             <p>
-              At <a href="https://unionconcept.ma">Union Concept</a>, I built modular ERP features
-              with Spring Boot and React, designed robust REST APIs, and implemented secure
-              authentication and role-based access control.
+              Through internships, I have delivered production-oriented applications in business,
+              healthcare, and cybersecurity environments, with a focus on clean architecture,
+              maintainable APIs, and reliable execution.
             </p>
 
             <p>
-              I also delivered FastAPI and LangChain microservices at{' '}
-              <a href="https://ineoscyberdefense.com">INEOS Cyberdefense</a>, and deployed ML APIs
-              for medical imaging workflows at CHU Mohammed VI using Flask and TensorFlow.
+              At <a href="https://unionconcept.ma">Union Concept</a>, I contributed to a modular ERP
+              platform built with Spring Boot and React, including secure authentication
+              (JWT/OAuth2) and role-based access control with Spring Security.
             </p>
 
             <p>
-              I enjoy translating complex business and technical requirements into clean,
-              maintainable systems with measurable impact.
+              At <a href="https://www.cyberforces.net/">INEOS Cyberdefense</a>, I worked on a
+              FastAPI and React application, integrated external APIs, and helped automate
+              recommendation workflows using LangChain, Celery, Redis, and Docker.
             </p>
 
             <p>
-              On GitHub, I actively build and iterate across full-stack, cybersecurity, and AI
-              projects, including vulnerability analysis platforms, ML systems, and developer
-              productivity tools.
+              I also developed a Flask API for medical image segmentation workflows at CHU Mohammed
+              VI using TensorFlow models (EfficientNet and UNet), and previously built Odoo-based
+              business systems with PostgreSQL at AgilOrg.
+            </p>
+
+            <p>
+              I enjoy turning complex requirements into practical, user-focused software and
+              collaborating in teams where engineering quality and continuous learning are valued.
             </p>
 
             <p>Core technologies I work with:</p>
