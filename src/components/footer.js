@@ -106,10 +106,7 @@ const Footer = () => {
 
       <StyledCredit tabIndex="-1">
         <a href="https://github.com/yassernamez03">
-          <div>Designed and customized by Yasser Namez
-          </div>
-
-          {githubInfo.stars && githubInfo.forks && (
+          {Number(githubInfo.stars) > 0 && Number(githubInfo.forks) > 0 && (
             <div className="github-stats">
               <span>
                 <Icon name="Star" />
