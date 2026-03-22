@@ -132,36 +132,18 @@ const About = () => {
           <div>
             <p>
               I am a fourth-year Software and Information Systems Engineering student at ENSET
-              Mohammedia, with a strong interest in AI/ML and full-stack software engineering.
+              Mohammedia, focused on AI/ML and full-stack development.
             </p>
 
             <p>
-              Through internships, I have delivered production-oriented applications in business,
-              healthcare, and cybersecurity environments, with a focus on clean architecture,
-              maintainable APIs, and reliable execution.
+              Through internships, I built production-oriented solutions in business, healthcare,
+              and cybersecurity, with emphasis on clean architecture and reliable APIs.
             </p>
 
             <p>
-              At <a href="https://unionconcept.ma">Union Concept</a>, I contributed to a modular ERP
-              platform built with Spring Boot and React, including secure authentication
-              (JWT/OAuth2) and role-based access control with Spring Security.
-            </p>
-
-            <p>
-              At <a href="https://www.cyberforces.net/">INEOS Cyberdefense</a>, I worked on a
-              FastAPI and React application, integrated external APIs, and helped automate
-              recommendation workflows using LangChain, Celery, Redis, and Docker.
-            </p>
-
-            <p>
-              I also developed a Flask API for medical image segmentation workflows at CHU Mohammed
-              VI using TensorFlow models (EfficientNet and UNet), and previously built Odoo-based
-              business systems with PostgreSQL at AgilOrg.
-            </p>
-
-            <p>
-              I enjoy turning complex requirements into practical, user-focused software and
-              collaborating in teams where engineering quality and continuous learning are valued.
+              I contributed to ERP systems with Spring Boot and React, cybersecurity tools with
+              FastAPI and LangChain, and medical AI workflows with Flask and TensorFlow. I enjoy
+              turning complex requirements into practical, user-focused software.
             </p>
 
             <p>Core technologies I work with:</p>
