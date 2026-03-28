@@ -6,6 +6,27 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const certs = [
   {
+    name: 'Foundation: Introduction to LangChain - Python',
+    issuer: 'LangChain',
+    date: 'Mar 2026',
+    credentialId: 'iifton9kdy',
+    url: 'https://academy.langchain.com/certificates/iifton9kdy',
+  },
+  {
+    name: 'Model Context Protocol: Advanced Topics',
+    issuer: 'Anthropic',
+    date: 'Mar 2026',
+    credentialId: 'etqnv52typk7',
+    url: 'https://verify.skilljar.com/c/etqnv52typk7',
+  },
+  {
+    name: 'Introduction to Model Context Protocol',
+    issuer: 'Anthropic',
+    date: 'Mar 2026',
+    credentialId: 'u8jwkjwagwxb',
+    url: 'https://verify.skilljar.com/c/u8jwkjwagwxb',
+  },
+  {
     name: 'Associate AI Engineer for Developers',
     issuer: 'DataCamp',
     date: 'Feb 2026',
