@@ -13,6 +13,19 @@ const certs = [
     url: 'https://academy.langchain.com/certificates/iifton9kdy',
   },
   {
+    name: 'Microsoft Applied Skills: Create an AI agent',
+    issuer: 'Microsoft',
+    date: 'Mar 2026',
+    credentialId: '89DA6A623D960E54',
+    url: 'https://learn.microsoft.com/en-us/users/yassernamez-5125/credentials/89da6a623d960e54?ref=https%3A%2F%2Fwww.linkedin.com%2F',
+  },
+  {
+    name: 'Red Hat System Administration II (RH134 - RHA) - Ver. 10',
+    issuer: 'Red Hat',
+    date: 'Mar 2026',
+    url: 'https://www.credly.com/badges/78c0bdcf-fd0d-4ae6-8a70-f9bbb3cdabc4/linked_in_profile',
+  },
+  {
     name: 'Model Context Protocol: Advanced Topics',
     issuer: 'Anthropic',
     date: 'Mar 2026',
