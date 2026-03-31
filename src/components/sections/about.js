@@ -149,11 +149,6 @@ const About = () => {
             <p>Core technologies I work with:</p>
           </div>
 
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => (
-              <li key={i}><TechBadge name={skill} /></li>
-            ))}
-          </ul>
         </StyledText>
 
         <StyledPic>
