@@ -46,6 +46,12 @@ const certs = [
     url: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/50d9c2d0ad5f8b201d333b030310fe87a42881b7?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink',
   },
   {
+    name: 'Associate AI Engineer for Data Scientists',
+    issuer: 'DataCamp',
+    date: 'Mar 2026',
+    url: 'https://www.datacamp.com/completed/statement-of-accomplishment/track/e3940669961beaa65c77db42c127fbbec67c38c8',
+  },
+  {
     name: 'EF SET English Certificate (C2 Proficient)',
     issuer: 'EF SET',
     date: 'Jan 2026',
