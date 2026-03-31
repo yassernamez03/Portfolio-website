@@ -112,17 +112,6 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = [
-    'Python', 'FastAPI', 'Flask', 'Django',
-    'Java', 'Spring Boot',
-    'React', 'Tailwind CSS', 'Next.js',
-    'PostgreSQL', 'MySQL', 'MongoDB', 'Redis',
-    'Docker', 'Kubernetes',
-    'TensorFlow', 'Scikit-learn', 'PyTorch',
-    'LangChain', 'OpenCV', 'Hugging Face',
-    'GitHub Actions', 'Linux',
-  ];
-
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       <h2 className="numbered-heading">About Me</h2>
