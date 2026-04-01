@@ -139,7 +139,7 @@ const certs = [
     name: 'Machine Learning Specialization',
     issuer: 'DeepLearning.AI',
     date: 'Jan 2024',
-    url: 'https://www.coursera.org',
+    url: 'https://drive.google.com/file/d/1CiMAvsg8QpMbQ9_qwaNfbKIgdSmHMx1_/view?usp=sharing',
   },
   {
     name: 'Internet Society Encryption Course',
