@@ -134,8 +134,6 @@ const About = () => {
               FastAPI and LangChain, and medical AI workflows with Flask and TensorFlow. I enjoy
               turning complex requirements into practical, user-focused software.
             </p>
-
-            <p>Core technologies I work with:</p>
           </div>
 
         </StyledText>
