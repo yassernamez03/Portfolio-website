@@ -139,18 +139,18 @@ const GlobalStyle = createGlobalStyle`
 
     &:before {
       background:
-        radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.2) 0%, rgba(20, 184, 166, 0) 34%),
-        radial-gradient(circle at 82% 16%, rgba(45, 212, 191, 0.22) 0%, rgba(45, 212, 191, 0) 36%),
-        radial-gradient(circle at 72% 74%, rgba(20, 184, 166, 0.12) 0%, rgba(20, 184, 166, 0) 40%),
-        radial-gradient(circle at 16% 78%, rgba(11, 15, 16, 0.45) 0%, rgba(11, 15, 16, 0) 45%);
+        radial-gradient(circle at 12% 18%, rgba(35, 83, 71, 0.28) 0%, rgba(35, 83, 71, 0) 34%),
+        radial-gradient(circle at 82% 16%, rgba(142, 182, 155, 0.24) 0%, rgba(142, 182, 155, 0) 36%),
+        radial-gradient(circle at 72% 74%, rgba(22, 56, 50, 0.22) 0%, rgba(22, 56, 50, 0) 40%),
+        radial-gradient(circle at 16% 78%, rgba(5, 31, 32, 0.55) 0%, rgba(5, 31, 32, 0) 45%);
       filter: blur(28px) saturate(1.05);
       animation: ambientFloat 22s ease-in-out infinite alternate;
     }
 
     &:after {
       background:
-        linear-gradient(rgba(20, 184, 166, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(20, 184, 166, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(142, 182, 155, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(142, 182, 155, 0.08) 1px, transparent 1px),
         radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 55%);
       background-size:
         70px 70px,
