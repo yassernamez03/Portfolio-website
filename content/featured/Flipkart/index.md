@@ -1,6 +1,6 @@
 ---
 date: '2024-06-15'
-title: 'Medical Imaging REST API'
+title: 'Medical Imaging API'
 cover: './flipkart.png'
 github: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
 external: 'https://youtu.be/9ON0h4scqLo?si=ol8YckY3FSStuUso'
