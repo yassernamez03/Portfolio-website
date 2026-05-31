@@ -9,7 +9,6 @@ import {
   Writing,
   Featured,
   Projects,
-  Resume,
   Volunteering,
   Certifications,
   Contact,
@@ -27,7 +26,6 @@ const IndexPage = ({ location }) => (
       <Jobs />
       <Featured />
       <Projects />
-      <Resume />
       <Writing />
       <Volunteering />
       <Certifications />
