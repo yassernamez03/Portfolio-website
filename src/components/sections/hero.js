@@ -40,9 +40,28 @@ const StyledHeroSection = styled.section`
     max-width: 540px;
   }
 
-  .email-link {
-    ${({ theme }) => theme.mixins.bigButton};
+  .cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 50px;
+  }
+
+  .cta-link {
+    ${({ theme }) => theme.mixins.bigButton};
+  }
+
+  .cta-link.secondary {
+    background-color: transparent;
+    color: var(--light-slate);
+    border-color: var(--light-slate);
+
+    &:hover,
+    &:focus {
+      background-color: var(--green-tint);
+      color: var(--green-secondary);
+      border-color: var(--green-secondary);
+    }
   }
 `;
 
@@ -73,13 +92,18 @@ const Hero = () => {
     </>
   );
   const five = (
-    <a
-      className="email-link"
-      href="mailto:yasser.namez3@gmail.com"
-      target="_blank"
-      rel="noreferrer">
-      Let&apos;s Connect
-    </a>
+    <div className="cta-group">
+      <a
+        className="cta-link"
+        href="mailto:yasser.namez3@gmail.com"
+        target="_blank"
+        rel="noreferrer">
+        Let&apos;s Connect
+      </a>
+      <a href="/resume.pdf" className="cta-link secondary" download>
+        Download Resume
+      </a>
+    </div>
   );
 
   const items = [one, two, three, four, five];
