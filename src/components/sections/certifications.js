@@ -6,6 +6,33 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const certs = [
   {
+    name: 'AWS Academy Graduate - Cloud Security Foundations',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'May 2026',
+    url: 'https://www.credly.com/badges/04b258b8-906d-4d4d-82e7-35c9d3c13473/linked_in_profile',
+  },
+  {
+    name: 'Fortinet Certified Fundamentals in Cybersecurity',
+    issuer: 'Fortinet',
+    date: 'May 2026',
+    credentialId: '3766223233YN',
+    url: 'https://training.fortinet.com/local/cert/my/certificate.php?badge=84',
+  },
+  {
+    name: 'AI Engineer for Developers Associate',
+    issuer: 'DataCamp',
+    date: 'Apr 2026',
+    credentialId: 'AIEDA0017699616157',
+    url: 'https://www.datacamp.com/certificate/AIEDA0017699616157',
+  },
+  {
+    name: 'AI Engineer for Data Scientists Associate',
+    issuer: 'DataCamp',
+    date: 'Apr 2026',
+    credentialId: 'AEDS0018415683081',
+    url: 'https://www.datacamp.com/certificate/AEDS0018415683081',
+  },
+  {
     name: 'Foundation: Introduction to LangChain - Python',
     issuer: 'LangChain',
     date: 'Mar 2026',
