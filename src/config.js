@@ -8,7 +8,7 @@ module.exports = {
     },
     {
       name: 'Linkedin',
-      url: 'https://linkedin.com/in/yasser-namez-0898a322b',
+      url: 'https://www.linkedin.com/in/yasser-namez/',
     },
     {
       name: 'YouTube',
