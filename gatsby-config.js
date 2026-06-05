@@ -2,12 +2,24 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Yasser Namez',
+    title: 'Yasser Namez | Software Engineer Portfolio',
     description:
-      'Software Engineer focused on full-stack and AI/ML applications with hands-on internship experience in production systems.',
+      'Yasser Namez is a software engineer focused on full-stack and AI/ML applications with hands-on internship experience in production systems.',
     siteUrl: 'https://yassernamez.tech', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@yassernamez03',
+    author: 'Yasser Namez',
+    siteName: 'Yasser Namez Portfolio',
+    jobTitle: 'Software Engineer',
+    keywords: [
+      'Yasser Namez',
+      'Yasser Namez portfolio',
+      'software engineer',
+      'full-stack developer',
+      'AI/ML engineer',
+      'Gatsby portfolio',
+    ],
+    socialLinks: config.socialMedia.map((item) => item.url),
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
