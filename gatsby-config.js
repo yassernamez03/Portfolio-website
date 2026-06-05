@@ -10,6 +10,9 @@ module.exports = {
     twitterUsername: '@yassernamez03',
     author: 'Yasser Namez',
     siteName: 'Yasser Namez Portfolio',
+    siteLanguage: 'en',
+    siteLocale: 'en_US',
+    siteType: 'website',
     jobTitle: 'Software Engineer',
     keywords: [
       'Yasser Namez',
@@ -28,7 +31,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://yassernamez.tech',
+        sitemap: 'https://yassernamez.tech/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

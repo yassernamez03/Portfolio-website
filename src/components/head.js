@@ -21,6 +21,9 @@ const Head = ({ title, description, image }) => {
             twitterUsername
             author
             siteName
+            siteLanguage
+            siteLocale
+            siteType
             jobTitle
             keywords
             socialLinks
@@ -38,6 +41,9 @@ const Head = ({ title, description, image }) => {
     twitterUsername,
     author,
     siteName,
+    siteLanguage,
+    siteLocale,
+    siteType,
     jobTitle,
     keywords,
     socialLinks,
@@ -52,6 +58,9 @@ const Head = ({ title, description, image }) => {
 
   const keywordsContent = Array.isArray(keywords) ? keywords.filter(Boolean).join(', ') : null;
   const sameAsLinks = Array.isArray(socialLinks) ? socialLinks.filter(Boolean) : [];
+  const language = siteLanguage || 'en';
+  const locale = siteLocale || 'en_US';
+  const ogType = siteType || 'website';
   const personId = `${siteUrl}/#person`;
   const personSchema = {
     '@context': 'https://schema.org',
@@ -77,12 +86,29 @@ const Head = ({ title, description, image }) => {
     url: siteUrl,
     name: siteName || defaultTitle,
     publisher: { '@id': personId },
-    inLanguage: 'en',
+    inLanguage: language,
+  };
+
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${seo.url}#webpage`,
+    url: seo.url,
+    name: seo.title,
+    description: seo.description,
+    inLanguage: language,
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': personId },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: seo.image,
+    },
+    publisher: { '@id': personId },
   };
 
   return (
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
-      <html lang="en" />
+      <html lang={language} />
 
       <meta name="description" content={seo.description} />
       <meta name="author" content={author || defaultTitle} />
@@ -95,10 +121,11 @@ const Head = ({ title, description, image }) => {
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
+      <meta property="og:image:alt" content={seo.title} />
       <meta property="og:url" content={seo.url} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteName || defaultTitle} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={locale} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={twitterUsername} />
@@ -106,11 +133,13 @@ const Head = ({ title, description, image }) => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter:image:alt" content={seo.title} />
+      <meta name="twitter:url" content={seo.url} />
 
       <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
 
       <script type="application/ld+json">
-        {JSON.stringify([personSchema, websiteSchema])}
+        {JSON.stringify([personSchema, websiteSchema, webPageSchema])}
       </script>
 
       {sameAsLinks.map((link) => (

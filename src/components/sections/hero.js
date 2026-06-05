@@ -17,7 +17,7 @@ const StyledHeroSection = styled.section`
     padding-top: var(--nav-height);
   }
 
-  h1 {
+  .hero-intro {
     margin: 0 0 30px 4px;
     color: var(--green);
     font-family: var(--font-mono);
@@ -29,7 +29,7 @@ const StyledHeroSection = styled.section`
     }
   }
 
-  h3 {
+  .hero-tagline {
     margin-top: 5px;
     color: var(--slate);
     line-height: 0.9;
@@ -78,9 +78,9 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hello, my name is</h1>;
-  const two = <h2 className="big-heading">Yasser Namez</h2>;
-  const three = <h3 className="medium-heading">Computer Science student at ENSET</h3>;
+  const one = <p className="hero-intro">Hello, my name is</p>;
+  const two = <h1 className="big-heading">Yasser Namez</h1>;
+  const three = <h2 className="medium-heading hero-tagline">Computer Science student at ENSET</h2>;
   const four = (
     <>
       <p>Welcome. I&apos;m Yasser Namez, and I build things to understand them better.</p>
