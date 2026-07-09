@@ -60,6 +60,20 @@ const certs = [
     url: 'https://verify.skilljar.com/c/etqnv52typk7',
   },
   {
+    name: 'Foundation: Introduction to Deep Agents',
+    issuer: 'LangChain',
+    date: 'Jul 2026',
+    credentialId: 'osk1ds6llm',
+    url: 'https://academy.langchain.com/certificates/osk1ds6llm',
+  },
+  {
+    name: 'Foundation: Introduction to LangGraph - Python',
+    issuer: 'LangChain',
+    date: 'Jun 2026',
+    credentialId: 'bghvwch0c4',
+    url: 'https://academy.langchain.com/certificates/bghvwch0c4',
+  },
+  {
     name: 'Introduction to Model Context Protocol',
     issuer: 'Anthropic',
     date: 'Mar 2026',
