@@ -6,6 +6,20 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const certs = [
   {
+    name: 'Foundation: Introduction to Deep Agents',
+    issuer: 'Jul 2026',
+    date: 'May 2026',
+    credentialId: 'osk1ds6llm',
+    url: 'https://academy.langchain.com/certificates/osk1ds6llm',
+  },
+  {
+    name: 'Foundation: Introduction to LangGraph - Python',
+    issuer: 'LangChain',
+    date: 'Jun 2026',
+    credentialId: 'bghvwch0c4',
+    url: 'https://academy.langchain.com/certificates/bghvwch0c4',
+  },
+  {
     name: 'AWS Academy Graduate - Cloud Security Foundations',
     issuer: 'Amazon Web Services (AWS)',
     date: 'May 2026',
