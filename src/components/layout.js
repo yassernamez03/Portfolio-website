@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
+import PixelCat from '@components/PixelCat';
 
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
 `;
 
 const Layout = ({ children, location }) => {
@@ -62,6 +64,7 @@ const Layout = ({ children, location }) => {
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
             <StyledContent>
+              <PixelCat />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
 

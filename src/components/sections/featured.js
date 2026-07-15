@@ -132,23 +132,19 @@ const StyledProject = styled.li`
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+    line-height: 0;
 
     a {
       display: block;
       width: 100%;
-      min-height: 200px;
+      height: 100%;
     }
 
     .img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .project-image a {
-      min-height: 180px;
+      vertical-align: middle;
     }
   }
 `;
