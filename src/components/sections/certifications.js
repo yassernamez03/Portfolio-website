@@ -4,25 +4,25 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
-// Logo mapping: issuer name → Simple Icons CDN slug (white color for dark bg)
+// Logo mapping: issuer name → CDN URLs
 const issuerLogos = {
   'LangChain': 'https://cdn.simpleicons.org/langchain/8EB69B',
-  'Amazon Web Services (AWS)': 'https://img.icons8.com/?size=100&id=G0CnLqqcRBXl&format=png&color=000000',
+  'Amazon Web Services (AWS)': 'https://api.iconify.design/cib/amazon-aws.svg?color=%238EB69B',
   'Fortinet': 'https://cdn.simpleicons.org/fortinet/8EB69B',
   'DataCamp': 'https://cdn.simpleicons.org/datacamp/8EB69B',
-  'Microsoft': 'https://cdn.simpleicons.org/microsoft/8EB69B',
+  'Microsoft': 'https://api.iconify.design/cib/microsoft.svg?color=%238EB69B',
   'Red Hat': 'https://cdn.simpleicons.org/redhat/8EB69B',
   'Anthropic': 'https://cdn.simpleicons.org/anthropic/8EB69B',
-  'EF SET': 'https://cdn.simpleicons.org/e/8EB69B', 
+  'EF SET': 'https://cdn.simpleicons.org/e/8EB69B',
   'MongoDB': 'https://cdn.simpleicons.org/mongodb/8EB69B',
   'Huawei': 'https://cdn.simpleicons.org/huawei/8EB69B',
-  'Oracle': 'https://cdn.simpleicons.org/oracle/8EB69B',
+  'Oracle': 'https://api.iconify.design/cib/oracle.svg?color=%238EB69B',
   'The Linux Foundation': 'https://cdn.simpleicons.org/linux/8EB69B',
   'Cisco': 'https://cdn.simpleicons.org/cisco/8EB69B',
   'NVIDIA': 'https://cdn.simpleicons.org/nvidia/8EB69B',
   'UM6P – University Mohammed VI Polytechnic': 'https://cdn.simpleicons.org/academia/8EB69B',
-  'DeepLearning.AI': 'https://cdn.simpleicons.org/deeplearningdotai/8EB69B',
-  'Internet Society': 'https://cdn.simpleicons.org/internetsociety/8EB69B',
+  'DeepLearning.AI': 'https://api.iconify.design/mdi/brain.svg?color=%238EB69B',
+  'Internet Society': 'https://api.iconify.design/mdi/earth.svg?color=%238EB69B',
 };
 
 const certs = [
