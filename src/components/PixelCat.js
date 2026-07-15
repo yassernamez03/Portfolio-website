@@ -26,8 +26,8 @@ function getSectionTarget(sectionId) {
     if (heroName) {
       const rect = heroName.getBoundingClientRect();
       return {
-        x: rect.right + 42,
-        y: rect.top + rect.height / 2,
+        x: rect.right + window.scrollX + 72,
+        y: rect.top + window.scrollY + rect.height / 2,
       };
     }
   }
@@ -39,8 +39,8 @@ function getSectionTarget(sectionId) {
   const rect = (heading ?? section).getBoundingClientRect();
 
   return heading
-    ? { x: rect.right + 34, y: rect.top + rect.height / 2 }
-    : { x: rect.left + 180, y: rect.top + 56 };
+    ? { x: rect.right + window.scrollX + 64, y: rect.top + window.scrollY + rect.height / 2 }
+    : { x: rect.left + window.scrollX + 210, y: rect.top + window.scrollY + 56 };
 }
 
 /**
@@ -49,7 +49,7 @@ function getSectionTarget(sectionId) {
  */
 export default function PixelCat({
   sectionIds = DEFAULT_SECTION_IDS,
-  size = 70,
+  size = 80,
   speed = 80,
   furColor = 'var(--green, #67b77a)',
   outlineColor = 'var(--navy, #14213d)',
@@ -71,6 +71,8 @@ export default function PixelCat({
   const [idleAnimation, setIdleAnimation] = useState('idle');
   const [isWalking, setIsWalking] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [speechText, setSpeechText] = useState(null);
+  const speechTimerRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -85,6 +87,7 @@ export default function PixelCat({
 
     let previousTimestamp = performance.now();
     let facingDirection = 1;
+    let lastMousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
     const setWalking = nextValue => {
       if (isWalkingRef.current === nextValue) return;
@@ -97,6 +100,11 @@ export default function PixelCat({
       idleTimerRef.current = null;
       isRestingRef.current = false;
       setIdleAnimation('idle');
+      
+      // Clear speech when moving
+      window.clearTimeout(speechTimerRef.current);
+      speechTimerRef.current = null;
+      setSpeechText(null);
     };
 
     const startIdleCycle = () => {
@@ -108,6 +116,14 @@ export default function PixelCat({
         if (!isRestingRef.current || isFollowingRef.current) return;
 
         setIdleAnimation(pickRandom(IDLE_ANIMATIONS));
+
+        // 25% chance to say something cute when changing idle animation
+        if (Math.random() < 0.25) {
+          setSpeechText(pickRandom(['hello!', 'meow~', '*purr*', 'hi there!', '*nap time*']));
+          window.clearTimeout(speechTimerRef.current);
+          speechTimerRef.current = window.setTimeout(() => setSpeechText(null), 3000);
+        }
+
         idleTimerRef.current = window.setTimeout(cycle, 2400 + Math.random() * 1800);
       };
 
@@ -131,8 +147,6 @@ export default function PixelCat({
     toggleFollowRef.current = toggleFollow;
 
     const updateActiveSection = () => {
-      if (isFollowingRef.current) return;
-
       const nextSection = [...visibility.entries()]
         .filter(([, ratio]) => ratio >= 0.25)
         .sort((a, b) => b[1] - a[1])[0]?.[0];
@@ -140,7 +154,17 @@ export default function PixelCat({
       if (!nextSection || nextSection === activeSectionRef.current) return;
 
       activeSectionRef.current = nextSection;
-      moveHome();
+      
+      // Automatically wake up and start following when entering a new section
+      if (!isFollowingRef.current) {
+        isFollowingRef.current = true;
+        setIsFollowing(true);
+        targetRef.current = {
+          x: lastMousePos.x + window.scrollX,
+          y: lastMousePos.y + window.scrollY,
+        };
+        stopIdleCycle();
+      }
     };
 
     const observer = new IntersectionObserver(
@@ -174,11 +198,12 @@ export default function PixelCat({
     wrapper.style.opacity = '1';
 
     const handlePointerMove = event => {
+      lastMousePos = { x: event.clientX, y: event.clientY };
       if (!isFollowingRef.current) return;
 
       targetRef.current = {
-        x: event.clientX,
-        y: event.clientY,
+        x: event.clientX + window.scrollX,
+        y: event.clientY + window.scrollY,
       };
       stopIdleCycle();
     };
@@ -191,8 +216,17 @@ export default function PixelCat({
       moveHome();
     };
 
-    const handleViewportChange = () => {
+    const handleResize = () => {
       if (!isFollowingRef.current) moveHome();
+    };
+
+    const handleScroll = () => {
+      if (isFollowingRef.current) {
+        targetRef.current = {
+          x: lastMousePos.x + window.scrollX,
+          y: lastMousePos.y + window.scrollY,
+        };
+      }
     };
 
     const animate = timestamp => {
@@ -232,8 +266,8 @@ export default function PixelCat({
     };
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    window.addEventListener('resize', handleViewportChange);
-    window.addEventListener('scroll', handleViewportChange, { passive: true });
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     document.documentElement.addEventListener('mouseleave', handlePointerLeave);
 
     animationFrameRef.current = window.requestAnimationFrame(animate);
@@ -241,11 +275,12 @@ export default function PixelCat({
     return () => {
       observer.disconnect();
       window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('resize', handleViewportChange);
-      window.removeEventListener('scroll', handleViewportChange);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
       document.documentElement.removeEventListener('mouseleave', handlePointerLeave);
       window.cancelAnimationFrame(animationFrameRef.current);
       window.clearTimeout(idleTimerRef.current);
+      window.clearTimeout(speechTimerRef.current);
       toggleFollowRef.current = () => {};
     };
   }, [sectionIds, speed]);
@@ -275,7 +310,7 @@ export default function PixelCat({
         '--cat-fur': furColor,
         '--cat-outline': outlineColor,
         '--cat-cheek': cheekColor,
-        position: 'fixed',
+        position: 'absolute',
         left: 0,
         top: 0,
         width: size,
@@ -318,12 +353,58 @@ export default function PixelCat({
           will-change: transform;
         }
 
+        .pixel-cat-speech {
+          position: absolute;
+          bottom: calc(100% - 10px);
+          left: 50%;
+          transform: translateX(-50%) translateY(-10px);
+          background: white;
+          color: var(--navy);
+          border: 2px solid var(--cat-outline);
+          border-radius: 8px;
+          padding: 4px 8px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          white-space: nowrap;
+          pointer-events: none;
+          z-index: 10;
+          animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .pixel-cat-speech::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          border-width: 5px;
+          border-style: solid;
+          border-color: var(--cat-outline) transparent transparent transparent;
+        }
+
+        .pixel-cat-speech::before {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-2px);
+          border-width: 4px;
+          border-style: solid;
+          border-color: white transparent transparent transparent;
+          z-index: 1;
+        }
+
+        @keyframes popIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(0) scale(0.8); }
+          to { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1); }
+        }
+
         .cat-walk .pixel-cat-svg {
           animation: catWalk 320ms steps(2, end) infinite;
         }
 
         .cat-jump .pixel-cat-svg {
-          animation: catJump 700ms steps(4, end) infinite;
+          animation: catJump 600ms steps(1, end) infinite;
         }
 
         .cat-dance .pixel-cat-svg {
@@ -353,7 +434,9 @@ export default function PixelCat({
 
         @keyframes catJump {
           0%, 100% { transform: translateY(0); }
-          40%, 60% { transform: translateY(-12px); }
+          15%, 85% { transform: translateY(-4px); }
+          30%, 70% { transform: translateY(-8px); }
+          45%, 55% { transform: translateY(-12px); }
         }
 
         @keyframes catDance {
@@ -387,6 +470,11 @@ export default function PixelCat({
       `}</style>
 
       <span ref={facingRef} className="pixel-cat-facing" aria-hidden="true">
+        {speechText && (
+          <div className="pixel-cat-speech">
+            {speechText}
+          </div>
+        )}
         <svg
           className="pixel-cat-svg"
           viewBox="0 0 24 18"
