@@ -2,23 +2,23 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    --dark-navy: #051f20;
-    --navy: #051f20;
-    --light-navy: #0b2b26;
-    --lightest-navy: #163832;
-    --navy-shadow: rgba(5, 31, 32, 0.45);
-    --dark-slate: #235347;
-    --slate: #8eb69b;
-    --light-slate: #8eb69b;
-    --lightest-slate: #daf1de;
-    --white: #ffffff;
-    --green: #8eb69b;
-    --green-secondary: #daf1de;
-    --green-tint: rgba(142, 182, 155, 0.2);
-    --pink: #daf1de;
-    --blue: #235347;
-    --border: rgba(218, 241, 222, 0.18);
-    --surface: rgba(11, 43, 38, 0.88);
+    --dark-navy: #FFFFFF;
+    --navy: #FFFFFF;
+    --light-navy: #F0F0F0;
+    --lightest-navy: #D9D9D9;
+    --navy-shadow: rgba(53, 53, 53, 0.25);
+    --dark-slate: #3C6F71;
+    --slate: #353535;
+    --light-slate: #353535;
+    --lightest-slate: #353535;
+    --white: #353535;
+    --green: #284B63;
+    --green-secondary: #3C6F71;
+    --green-tint: rgba(40, 75, 99, 0.1);
+    --pink: #3C6F71;
+    --blue: #284B63;
+    --border: #D9D9D9;
+    --surface: rgba(255, 255, 255, 0.88);
 
     --font-sans: 'Inter', 'Calibre', 'Space Grotesk', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
