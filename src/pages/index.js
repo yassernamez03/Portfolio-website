@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import {
   Layout,
   Hero,
-  About,
-  Jobs,
   Writing,
   Featured,
   Projects,
@@ -22,8 +20,6 @@ const IndexPage = ({ location }) => (
   <Layout location={location}>
     <StyledMainContainer className="fillHeight">
       <Hero />
-      <About />
-      <Jobs />
       <Featured />
       <Projects />
       <Writing />
