@@ -33,8 +33,8 @@ const StyledHeroSection = styled.section`
 
   .hero-graphic {
     flex-shrink: 0;
-    max-width: 320px;
-    margin-right: 60px;
+    max-width: 200px;
+    margin-left: 60px;
     
     img {
       width: 100%;
@@ -43,9 +43,9 @@ const StyledHeroSection = styled.section`
     }
 
     @media (max-width: 768px) {
-      margin-right: 0;
-      margin-bottom: 30px;
-      max-width: 200px;
+      margin-left: 0;
+      margin-top: 30px;
+      max-width: 150px;
     }
   }
 
@@ -150,22 +150,6 @@ const Hero = () => {
   return (
     <StyledHeroSection>
       <div className="hero-container">
-        <div className="hero-graphic">
-          {prefersReducedMotion ? (
-            <img src={pixelCat} alt="Pixelated Cat" />
-          ) : (
-            <TransitionGroup component={null}>
-              {isMounted && (
-                <CSSTransition classNames="fadeup" timeout={loaderDelay}>
-                  <div style={{ transitionDelay: '100ms' }}>
-                    <img src={pixelCat} alt="Pixelated Cat" />
-                  </div>
-                </CSSTransition>
-              )}
-            </TransitionGroup>
-          )}
-        </div>
-        
         <div className="hero-content">
           {prefersReducedMotion ? (
             <>
@@ -181,6 +165,22 @@ const Hero = () => {
                     <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
                   </CSSTransition>
                 ))}
+            </TransitionGroup>
+          )}
+        </div>
+
+        <div className="hero-graphic">
+          {prefersReducedMotion ? (
+            <img src={pixelCat} alt="Pixelated Cat" />
+          ) : (
+            <TransitionGroup component={null}>
+              {isMounted && (
+                <CSSTransition classNames="fadeup" timeout={loaderDelay}>
+                  <div style={{ transitionDelay: '100ms' }}>
+                    <img src={pixelCat} alt="Pixelated Cat" />
+                  </div>
+                </CSSTransition>
+              )}
             </TransitionGroup>
           )}
         </div>
