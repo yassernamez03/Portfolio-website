@@ -8,9 +8,10 @@ video: 'https://www.youtube.com/embed?listType=user_uploads&list=mighty_programm
 tech:
   - Java
   - Spring Boot
+  - Spring Security
   - React
   - PostgreSQL
-  - Docker
+  - Docker Compose
 ---
 
 Modular full-stack ERP platform with 5 business modules, secure JWT/OAuth2 auth, role-based access control, and real-time WebSocket communication.

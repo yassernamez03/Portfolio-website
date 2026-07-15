@@ -7,8 +7,8 @@ import { usePrefersReducedMotion } from '@hooks';
 const certs = [
   {
     name: 'Foundation: Introduction to Deep Agents',
-    issuer: 'Jul 2026',
-    date: 'May 2026',
+    issuer: 'LangChain',
+    date: 'Jul 2026',
     credentialId: 'osk1ds6llm',
     url: 'https://academy.langchain.com/certificates/osk1ds6llm',
   },

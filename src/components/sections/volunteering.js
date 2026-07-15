@@ -6,7 +6,7 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const volunteers = [
   {
-    role: 'Technical Lead · CTF Challenge Developer',
+    role: 'Technical Lead AI/ML · CTF Challenge Developer',
     org: 'ENSET Challenge – N7SEC / N7Geeks / GDG On Campus ENSET-M',
     range: '2025 – Present',
     type: 'Cybersecurity',
@@ -14,7 +14,7 @@ const volunteers = [
       "Co-organizing Morocco's premier student cybersecurity competition as part of the Global Entrepreneurship & Innovation Week at ENSET Mohammedia. Designing and developing CTF challenges across Web Exploitation, Cryptography, Binary Analysis, and Network & Forensics, and contributing to the competition platform infrastructure for the online qualifiers and the 12-hour on-site finals.",
   },
   {
-    role: 'Core Team Member · Tech Lead',
+    role: 'Core Team Member · AI/ML Tech Lead',
     org: 'Google Developer Groups on Campus – ENSET Mohammedia',
     range: 'Oct 2025 – Present',
     type: 'Education',
@@ -22,7 +22,7 @@ const volunteers = [
       'Leading technical initiatives and workshops within the GDG on Campus community, organizing developer events and mentoring fellow students in software and cloud technologies.',
   },
   {
-    role: 'Core Team Member · Tech Lead',
+    role: 'Core Team Member · AI/ML Tech Lead',
     org: 'N7 Geeks',
     range: 'Oct 2024 – Nov 2025',
     type: 'Education',

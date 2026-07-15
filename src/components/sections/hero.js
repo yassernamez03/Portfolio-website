@@ -80,14 +80,15 @@ const Hero = () => {
 
   const one = <p className="hero-intro">Hello, my name is</p>;
   const two = <h1 className="big-heading">Yasser Namez</h1>;
-  const three = <h2 className="medium-heading hero-tagline">Computer Science student at ENSET</h2>;
+  const three = (
+    <h2 className="medium-heading hero-tagline">
+      Software Engineering student
+    </h2>
+  );
   const four = (
     <>
-      <p>Welcome. I&apos;m Yasser Namez, and I build things to understand them better.</p>
       <p>
-        Explore my portfolio of projects, read my reflections on what I&apos;m learning, and
-        discover the ideas that keep me curious. Here I document my journey and share insights along
-        with the small gems I discover on the internet. 
+        Here I document my journey and share insights along with the small gems I discover on the internet. 
       </p>
     </>
   );

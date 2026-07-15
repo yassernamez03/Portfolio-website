@@ -10,9 +10,10 @@ tech:
   - FastAPI
   - React
   - PostgreSQL
-  - Celery
+  - LangChain
+  - OpenAI
   - Redis
-  - Groq LLM
+  - Groq
 ---
 
 AI-powered security analysis platform that ingests OWASP ZAP, Nessus, Burp Suite, and Acunetix outputs with automated report generation and real-time vulnerability management.

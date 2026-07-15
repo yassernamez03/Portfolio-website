@@ -5,7 +5,10 @@ github: 'https://github.com/yassernamez03/StockSensie'
 external: 'https://github.com/yassernamez03/StockSensie'
 tech:
   - Python
-  - Machine Learning
+  - Flask
+  - SVM
+  - NLP
+  - LSTM
   - Time Series
   - Data Visualization
 company: 'Project'

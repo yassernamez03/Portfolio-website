@@ -128,12 +128,6 @@ const About = () => {
               Through internships, I built production-oriented solutions in business, healthcare,
               and cybersecurity, with emphasis on clean architecture and reliable APIs.
             </p>
-
-            <p>
-              I contributed to ERP systems with Spring Boot and React, cybersecurity tools with
-              FastAPI and LangChain, and medical AI workflows with Flask and TensorFlow. I enjoy
-              turning complex requirements into practical, user-focused software.
-            </p>
           </div>
 
         </StyledText>
