@@ -4,6 +4,27 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
+// Logo mapping: issuer name → Simple Icons CDN slug (white color for dark bg)
+const issuerLogos = {
+  'LangChain': 'https://cdn.simpleicons.org/langchain/8EB69B',
+  'Amazon Web Services (AWS)': 'https://cdn.simpleicons.org/amazonwebservices/8EB69B',
+  'Fortinet': 'https://cdn.simpleicons.org/fortinet/8EB69B',
+  'DataCamp': 'https://cdn.simpleicons.org/datacamp/8EB69B',
+  'Microsoft': 'https://cdn.simpleicons.org/microsoft/8EB69B',
+  'Red Hat': 'https://cdn.simpleicons.org/redhat/8EB69B',
+  'Anthropic': 'https://cdn.simpleicons.org/anthropic/8EB69B',
+  'EF SET': 'https://cdn.simpleicons.org/e/8EB69B',
+  'MongoDB': 'https://cdn.simpleicons.org/mongodb/8EB69B',
+  'Huawei': 'https://cdn.simpleicons.org/huawei/8EB69B',
+  'Oracle': 'https://cdn.simpleicons.org/oracle/8EB69B',
+  'The Linux Foundation': 'https://cdn.simpleicons.org/linux/8EB69B',
+  'Cisco': 'https://cdn.simpleicons.org/cisco/8EB69B',
+  'NVIDIA': 'https://cdn.simpleicons.org/nvidia/8EB69B',
+  'UM6P – University Mohammed VI Polytechnic': 'https://cdn.simpleicons.org/academia/8EB69B',
+  'DeepLearning.AI': 'https://cdn.simpleicons.org/deeplearningdotai/8EB69B',
+  'Internet Society': 'https://cdn.simpleicons.org/internetsociety/8EB69B',
+};
+
 const certs = [
   {
     name: 'Foundation: Introduction to Deep Agents',
@@ -243,12 +264,35 @@ const StyledCert = styled.li`
     transition: var(--transition);
   }
 
+  .cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  .cert-logo {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    transition: var(--transition);
+    filter: drop-shadow(0 0 4px rgba(142, 182, 155, 0.15));
+
+    &:hover {
+      opacity: 1;
+      filter: drop-shadow(0 0 8px rgba(142, 182, 155, 0.35));
+    }
+  }
+
   .cert-name {
     font-size: var(--fz-md);
     font-weight: 600;
     color: var(--lightest-slate);
     margin: 0 0 8px;
     line-height: 1.3;
+    flex: 1;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -284,23 +328,38 @@ const Certifications = () => {
     <StyledCertificationsSection id="certifications" ref={revealContainer}>
       <h2 className="numbered-heading">Certifications</h2>
       <ul className="certs-grid">
-        {certs.map(({ name, issuer, date, url }, i) => (
-          <StyledCert key={i} ref={el => (revealItems.current[i] = el)}>
-            <div className="cert-inner">
-              <p className="cert-name">
-                {url ? (
-                  <a href={url} target="_blank" rel="noreferrer">
-                    {name}
-                  </a>
-                ) : (
-                  name
-                )}
-              </p>
-              <p className="cert-issuer">{issuer}</p>
-              <p className="cert-date">Issued {date}</p>
-            </div>
-          </StyledCert>
-        ))}
+        {certs.map(({ name, issuer, date, url }, i) => {
+          const logoUrl = issuerLogos[issuer];
+          return (
+            <StyledCert key={i} ref={el => (revealItems.current[i] = el)}>
+              <div className="cert-inner">
+                <div className="cert-header">
+                  <p className="cert-name">
+                    {url ? (
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {name}
+                      </a>
+                    ) : (
+                      name
+                    )}
+                  </p>
+                  {logoUrl && (
+                    <img
+                      className="cert-logo"
+                      src={logoUrl}
+                      alt={`${issuer} logo`}
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+                <div>
+                  <p className="cert-issuer">{issuer}</p>
+                  <p className="cert-date">Issued {date}</p>
+                </div>
+              </div>
+            </StyledCert>
+          );
+        })}
       </ul>
     </StyledCertificationsSection>
   );
