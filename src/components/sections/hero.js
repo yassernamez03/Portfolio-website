@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
+import pixelCat from '../../images/pixel-cat.gif';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -15,6 +16,43 @@ const StyledHeroSection = styled.section`
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
     padding-top: var(--nav-height);
+  }
+
+  .hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  .hero-graphic {
+    flex-shrink: 0;
+    max-width: 320px;
+    margin-right: 60px;
+    
+    img {
+      width: 100%;
+      height: auto;
+      /* If the GIF background isn't perfectly transparent, blending might help, but let's assume it's good */
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+      margin-bottom: 30px;
+      max-width: 200px;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .hero-intro {
@@ -111,22 +149,42 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
-        <>
-          {items.map((item, i) => (
-            <div key={i}>{item}</div>
-          ))}
-        </>
-      ) : (
-        <TransitionGroup component={null}>
-          {isMounted &&
-            items.map((item, i) => (
-              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
-      )}
+      <div className="hero-container">
+        <div className="hero-graphic">
+          {prefersReducedMotion ? (
+            <img src={pixelCat} alt="Pixelated Cat" />
+          ) : (
+            <TransitionGroup component={null}>
+              {isMounted && (
+                <CSSTransition classNames="fadeup" timeout={loaderDelay}>
+                  <div style={{ transitionDelay: '100ms' }}>
+                    <img src={pixelCat} alt="Pixelated Cat" />
+                  </div>
+                </CSSTransition>
+              )}
+            </TransitionGroup>
+          )}
+        </div>
+        
+        <div className="hero-content">
+          {prefersReducedMotion ? (
+            <>
+              {items.map((item, i) => (
+                <div key={i}>{item}</div>
+              ))}
+            </>
+          ) : (
+            <TransitionGroup component={null}>
+              {isMounted &&
+                items.map((item, i) => (
+                  <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                    <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+                  </CSSTransition>
+                ))}
+            </TransitionGroup>
+          )}
+        </div>
+      </div>
     </StyledHeroSection>
   );
 };
