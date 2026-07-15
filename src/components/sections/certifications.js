@@ -7,13 +7,13 @@ import { usePrefersReducedMotion } from '@hooks';
 // Logo mapping: issuer name → Simple Icons CDN slug (white color for dark bg)
 const issuerLogos = {
   'LangChain': 'https://cdn.simpleicons.org/langchain/8EB69B',
-  'Amazon Web Services (AWS)': 'https://cdn.simpleicons.org/amazonwebservices/8EB69B',
+  'Amazon Web Services (AWS)': 'https://img.icons8.com/?size=100&id=G0CnLqqcRBXl&format=png&color=000000',
   'Fortinet': 'https://cdn.simpleicons.org/fortinet/8EB69B',
   'DataCamp': 'https://cdn.simpleicons.org/datacamp/8EB69B',
   'Microsoft': 'https://cdn.simpleicons.org/microsoft/8EB69B',
   'Red Hat': 'https://cdn.simpleicons.org/redhat/8EB69B',
   'Anthropic': 'https://cdn.simpleicons.org/anthropic/8EB69B',
-  'EF SET': 'https://cdn.simpleicons.org/e/8EB69B',
+  'EF SET': 'https://cdn.simpleicons.org/e/8EB69B', 
   'MongoDB': 'https://cdn.simpleicons.org/mongodb/8EB69B',
   'Huawei': 'https://cdn.simpleicons.org/huawei/8EB69B',
   'Oracle': 'https://cdn.simpleicons.org/oracle/8EB69B',
