@@ -8,7 +8,6 @@ tech:
   - FastAPI
   - React
   - PostgreSQL
-  - Celery
   - Docker
 company: 'Project'
 showInProjects: true
