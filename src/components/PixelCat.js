@@ -469,12 +469,12 @@ export default function PixelCat({
         }
       `}</style>
 
+      {speechText && (
+        <div className="pixel-cat-speech">
+          {speechText}
+        </div>
+      )}
       <span ref={facingRef} className="pixel-cat-facing" aria-hidden="true">
-        {speechText && (
-          <div className="pixel-cat-speech">
-            {speechText}
-          </div>
-        )}
         <svg
           className="pixel-cat-svg"
           viewBox="0 0 24 18"
