@@ -155,16 +155,10 @@ export default function PixelCat({
 
       activeSectionRef.current = nextSection;
       
-      // Automatically wake up and start following when entering a new section
-      if (!isFollowingRef.current) {
-        isFollowingRef.current = true;
-        setIsFollowing(true);
-        targetRef.current = {
-          x: lastMousePos.x + window.scrollX,
-          y: lastMousePos.y + window.scrollY,
-        };
-        stopIdleCycle();
-      }
+      // Stop following and rest at the new section's heading
+      isFollowingRef.current = false;
+      setIsFollowing(false);
+      moveHome();
     };
 
     const observer = new IntersectionObserver(
