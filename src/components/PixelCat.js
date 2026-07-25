@@ -266,6 +266,10 @@ export default function PixelCat({
 
     animationFrameRef.current = window.requestAnimationFrame(animate);
 
+    const introTimer = window.setTimeout(() => {
+      if (!isFollowingRef.current) moveHome();
+    }, 3200);
+
     return () => {
       observer.disconnect();
       window.removeEventListener('pointermove', handlePointerMove);
@@ -275,6 +279,7 @@ export default function PixelCat({
       window.cancelAnimationFrame(animationFrameRef.current);
       window.clearTimeout(idleTimerRef.current);
       window.clearTimeout(speechTimerRef.current);
+      window.clearTimeout(introTimer);
       toggleFollowRef.current = () => {};
     };
   }, [sectionIds, speed]);
