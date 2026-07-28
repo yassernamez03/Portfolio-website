@@ -8,11 +8,11 @@ video: 'https://www.youtube.com/watch?v=defbE6fyKOE'
 tech:
   - Python
   - Flask
-  - SVM
+  - MongoDB
   - NLP
   - LSTM
-  - Time Series
-  - Data Visualization
+  - Pandas
+  - Keras
 company: 'Project'
 showInProjects: true
 ---

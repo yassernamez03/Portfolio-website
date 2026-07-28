@@ -11,7 +11,9 @@ tech:
   - Spring Security
   - React
   - PostgreSQL
-  - Docker Compose
+  - WebSocket
+  - STOMP
+  - Docker
 ---
 
 Modular full-stack ERP platform with 5 business modules, secure JWT/OAuth2 auth, role-based access control, and real-time WebSocket communication.

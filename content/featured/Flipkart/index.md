@@ -13,6 +13,7 @@ tech:
   - UNet
   - RestNet
   - VGG16
+  - scikit-image
   - EfficientNetB4
 ---
 

@@ -9,11 +9,13 @@ tech:
   - Python
   - FastAPI
   - React
+  - TypeScript
   - PostgreSQL
   - LangChain
   - OpenAI
   - Redis
   - Groq
+  - OWASP ZAP
 ---
 
 AI-powered security analysis platform that ingests OWASP ZAP, Nessus, Burp Suite, and Acunetix outputs with automated report generation and real-time vulnerability management.
