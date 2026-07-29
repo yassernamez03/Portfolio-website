@@ -1,8 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { srConfig } from '@config';
-import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
 
 // Logo mapping: issuer name → CDN URLs
 const issuerLogos = {
@@ -314,24 +311,15 @@ const StyledCert = styled.li`
 `;
 
 const Certifications = () => {
-  const revealContainer = useRef(null);
-  const revealItems = useRef([]);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    sr.reveal(revealContainer.current, srConfig());
-    revealItems.current.forEach((el, i) => sr.reveal(el, srConfig(i * 50)));
-  }, []);
 
   return (
-    <StyledCertificationsSection id="certifications" ref={revealContainer}>
+    <StyledCertificationsSection id="certifications">
       <h2 className="numbered-heading">Certifications</h2>
       <ul className="certs-grid">
         {certs.map(({ name, issuer, date, url }, i) => {
           const logoUrl = issuerLogos[issuer];
           return (
-            <StyledCert key={i} ref={el => (revealItems.current[i] = el)}>
+            <StyledCert key={i}>
               <div className="cert-inner">
                 <div className="cert-header">
                   <p className="cert-name">

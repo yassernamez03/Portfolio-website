@@ -55,6 +55,16 @@ export default function PixelCat({
   outlineColor = 'var(--navy, #14213d)',
   cheekColor = '#f2a7b8',
 }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mql = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mql.matches);
+    const handler = e => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
   const wrapperRef = useRef(null);
   const facingRef = useRef(null);
 
@@ -292,6 +302,8 @@ export default function PixelCat({
     toggleFollowRef.current();
   };
 
+  if (isMobile) return null;
+
   return (
     <button
       ref={wrapperRef}
@@ -329,6 +341,12 @@ export default function PixelCat({
           place-items: center;
           transition: opacity 180ms ease;
           -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+          .pixel-cat {
+            display: none !important;
+          }
         }
 
         .pixel-cat:focus-visible {
