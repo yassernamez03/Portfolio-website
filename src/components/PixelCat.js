@@ -2,60 +2,30 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-const DEFAULT_SECTION_IDS = [
-  'hero-section',
-  'projects',
-  'writing',
-  'volunteering',
-  'certifications',
-  'contact',
-];
-
 const IDLE_ANIMATIONS = ['idle', 'jump', 'dance', 'sit'];
-const ARRIVAL_DISTANCE = 1.5;
 const CAT_Y_OFFSET = 18;
 
 function pickRandom(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function getSectionTarget(sectionId) {
-  if (sectionId === 'hero-section') {
-    const heroName = document.getElementById('hero-name');
-
-    if (heroName) {
-      const rect = heroName.getBoundingClientRect();
-      return {
-        x: rect.right + window.scrollX + 72,
-        y: rect.top + window.scrollY + rect.height / 2,
-      };
-    }
-  }
-
-  const section = document.getElementById(sectionId);
-  if (!section) return null;
-
-  const heading = section.querySelector('h2');
-  const rect = (heading ?? section).getBoundingClientRect();
-
-  return heading
-    ? { x: rect.right + window.scrollX + 64, y: rect.top + window.scrollY + rect.height / 2 }
-    : { x: rect.left + window.scrollX + 210, y: rect.top + window.scrollY + 56 };
-}
-
 /**
- * A fixed-position pixel cat that rests beside the currently visible section.
- * Click the cat to toggle cursor-follow mode.
+ * A fixed-position pixel cat that rests beside the hero name.
  */
 export default function PixelCat({
-  sectionIds = DEFAULT_SECTION_IDS,
   size = 80,
-  speed = 80,
   furColor = 'var(--green, #67b77a)',
   outlineColor = 'var(--navy, #14213d)',
   cheekColor = '#f2a7b8',
 }) {
   const [isMobile, setIsMobile] = useState(false);
+  const [idleAnimation, setIdleAnimation] = useState('idle');
+  const [speechText, setSpeechText] = useState(null);
+  
+  const wrapperRef = useRef(null);
+  const idleTimerRef = useRef(null);
+  const speechTimerRef = useRef(null);
+  const isRestingRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -65,65 +35,37 @@ export default function PixelCat({
     mql.addEventListener('change', handler);
     return () => mql.removeEventListener('change', handler);
   }, []);
-  const wrapperRef = useRef(null);
-  const facingRef = useRef(null);
-
-  const targetRef = useRef({ x: 0, y: 0 });
-  const currentRef = useRef({ x: 0, y: 0 });
-  const activeSectionRef = useRef(sectionIds[0] ?? 'hero-section');
-  const isFollowingRef = useRef(false);
-  const isWalkingRef = useRef(false);
-  const isRestingRef = useRef(false);
-  const idleTimerRef = useRef(null);
-  const animationFrameRef = useRef(null);
-  const toggleFollowRef = useRef(() => {});
-
-  const [idleAnimation, setIdleAnimation] = useState('idle');
-  const [isWalking, setIsWalking] = useState(false);
-  const [isFollowing, setIsFollowing] = useState(false);
-  const [speechText, setSpeechText] = useState(null);
-  const speechTimerRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
+    if (typeof window === 'undefined') return;
 
     const wrapper = wrapperRef.current;
-    const facingLayer = facingRef.current;
-    if (!wrapper || !facingLayer) return undefined;
+    if (!wrapper) return;
 
-    const visibility = new Map();
-    // const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-
-    let previousTimestamp = performance.now();
-    let facingDirection = 1;
-    let lastMousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    const setWalking = nextValue => {
-      if (isWalkingRef.current === nextValue) return;
-      isWalkingRef.current = nextValue;
-      setIsWalking(nextValue);
+    // Position next to the hero name
+    const updatePosition = () => {
+      const heroName = document.getElementById('hero-name');
+      if (heroName && wrapper) {
+        const rect = heroName.getBoundingClientRect();
+        const x = rect.right + window.scrollX + 72;
+        const y = rect.top + window.scrollY + rect.height / 2;
+        
+        wrapper.style.transform = `translate3d(${x}px, ${y - CAT_Y_OFFSET}px, 0) translate(-50%, -50%)`;
+        wrapper.style.opacity = '1';
+      }
     };
 
-    const stopIdleCycle = () => {
-      window.clearTimeout(idleTimerRef.current);
-      idleTimerRef.current = null;
-      isRestingRef.current = false;
-      setIdleAnimation('idle');
-      
-      // Clear speech when moving
-      window.clearTimeout(speechTimerRef.current);
-      speechTimerRef.current = null;
-      setSpeechText(null);
-    };
+    // Initial position
+    setTimeout(updatePosition, 100);
+    
+    // Update on resize
+    window.addEventListener('resize', updatePosition);
 
     const startIdleCycle = () => {
-      if (isRestingRef.current || isFollowingRef.current) return;
-
       isRestingRef.current = true;
 
       const cycle = () => {
-        if (!isRestingRef.current || isFollowingRef.current) return;
+        if (!isRestingRef.current) return;
 
         setIdleAnimation(pickRandom(IDLE_ANIMATIONS));
 
@@ -140,183 +82,22 @@ export default function PixelCat({
       cycle();
     };
 
-    const moveHome = () => {
-      const target = getSectionTarget(activeSectionRef.current);
-      if (target) targetRef.current = target;
-      stopIdleCycle();
-    };
-
-    const toggleFollow = () => {
-      isFollowingRef.current = !isFollowingRef.current;
-      setIsFollowing(isFollowingRef.current);
-      stopIdleCycle();
-
-      if (!isFollowingRef.current) moveHome();
-    };
-
-    toggleFollowRef.current = toggleFollow;
-
-    const updateActiveSection = () => {
-      const nextSection = [...visibility.entries()]
-        .filter(([, ratio]) => ratio >= 0.25)
-        .sort((a, b) => b[1] - a[1])[0]?.[0];
-
-      if (!nextSection || nextSection === activeSectionRef.current) return;
-
-      activeSectionRef.current = nextSection;
-      
-      // Stop following and rest at the new section's heading
-      isFollowingRef.current = false;
-      setIsFollowing(false);
-      moveHome();
-    };
-
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          visibility.set(entry.target.id, entry.intersectionRatio);
-        });
-        updateActiveSection();
-      },
-      {
-        threshold: [0, 0.25, 0.4, 0.6, 0.8],
-        rootMargin: '-8% 0px -35% 0px',
-      },
-    );
-
-    sectionIds.forEach(id => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-
-    const initialTarget = getSectionTarget(activeSectionRef.current) ?? {
-      x: window.innerWidth / 2,
-      y: 160,
-    };
-
-    targetRef.current = initialTarget;
-    currentRef.current = { ...initialTarget };
-    wrapper.style.transform = `translate3d(${initialTarget.x}px, ${
-      initialTarget.y - CAT_Y_OFFSET
-    }px, 0) translate(-50%, -50%)`;
-    wrapper.style.opacity = '1';
-
-    const handlePointerMove = event => {
-      lastMousePos = { x: event.clientX, y: event.clientY };
-      if (!isFollowingRef.current) return;
-
-      targetRef.current = {
-        x: event.clientX + window.scrollX,
-        y: event.clientY + window.scrollY,
-      };
-      stopIdleCycle();
-    };
-
-    const handlePointerLeave = () => {
-      if (!isFollowingRef.current) return;
-
-      isFollowingRef.current = false;
-      setIsFollowing(false);
-      moveHome();
-    };
-
-    const handleResize = () => {
-      if (!isFollowingRef.current) moveHome();
-    };
-
-    const handleScroll = () => {
-      if (isFollowingRef.current) {
-        targetRef.current = {
-          x: lastMousePos.x + window.scrollX,
-          y: lastMousePos.y + window.scrollY,
-        };
-      }
-    };
-
-    const animate = timestamp => {
-      const deltaSeconds = Math.min((timestamp - previousTimestamp) / 1000, 0.05);
-      previousTimestamp = timestamp;
-
-      const current = currentRef.current;
-      const target = targetRef.current;
-      const dx = target.x - current.x;
-      const dy = target.y - current.y;
-      const distance = Math.hypot(dx, dy);
-
-      if (distance > ARRIVAL_DISTANCE) {
-        const step = Math.min(distance, speed * deltaSeconds);
-        current.x += (dx / distance) * step;
-        current.y += (dy / distance) * step;
-        setWalking(true);
-        stopIdleCycle();
-      } else {
-        current.x = target.x;
-        current.y = target.y;
-        setWalking(false);
-
-        if (!isFollowingRef.current) startIdleCycle();
-      }
-
-      if (Math.abs(dx) > 1) {
-        facingDirection = dx > 0 ? 1 : -1;
-        facingLayer.style.transform = `scaleX(${facingDirection})`;
-      }
-
-      wrapper.style.transform = `translate3d(${current.x}px, ${
-        current.y - CAT_Y_OFFSET
-      }px, 0) translate(-50%, -50%)`;
-
-      animationFrameRef.current = window.requestAnimationFrame(animate);
-    };
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.documentElement.addEventListener('mouseleave', handlePointerLeave);
-
-    animationFrameRef.current = window.requestAnimationFrame(animate);
-
-    const introTimer = window.setTimeout(() => {
-      if (!isFollowingRef.current) moveHome();
-    }, 3200);
+    startIdleCycle();
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('scroll', handleScroll);
-      document.documentElement.removeEventListener('mouseleave', handlePointerLeave);
-      window.cancelAnimationFrame(animationFrameRef.current);
+      window.removeEventListener('resize', updatePosition);
       window.clearTimeout(idleTimerRef.current);
       window.clearTimeout(speechTimerRef.current);
-      window.clearTimeout(introTimer);
-      toggleFollowRef.current = () => {};
+      isRestingRef.current = false;
     };
-  }, [sectionIds, speed]);
-
-  const motionClass = isWalking ? 'cat-walk' : `cat-${idleAnimation}`;
-
-  const handleKeyDown = event => {
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    event.preventDefault();
-    toggleFollowRef.current();
-  };
+  }, []);
 
   if (isMobile) return null;
 
   return (
-    <button
+    <div
       ref={wrapperRef}
-      type="button"
-      className={`pixel-cat ${motionClass}`}
-      aria-label={
-        isFollowing
-          ? 'Stop the pixel cat from following the cursor'
-          : 'Make the pixel cat follow the cursor'
-      }
-      aria-pressed={isFollowing}
-      onClick={() => toggleFollowRef.current()}
-      onKeyDown={handleKeyDown}
+      className={`pixel-cat cat-${idleAnimation}`}
       style={{
         '--cat-fur': furColor,
         '--cat-outline': outlineColor,
@@ -331,7 +112,6 @@ export default function PixelCat({
         border: 0,
         background: 'transparent',
         opacity: 0,
-        cursor: 'pointer',
         zIndex: 9999,
         willChange: 'transform',
       }}>
@@ -340,7 +120,6 @@ export default function PixelCat({
           display: grid;
           place-items: center;
           transition: opacity 180ms ease;
-          -webkit-tap-highlight-color: transparent;
         }
 
         @media (max-width: 768px) {
@@ -349,16 +128,10 @@ export default function PixelCat({
           }
         }
 
-        .pixel-cat:focus-visible {
-          outline: 2px solid currentColor;
-          outline-offset: 5px;
-        }
-
         .pixel-cat-facing {
           width: 100%;
           height: 100%;
           transform-origin: center;
-          will-change: transform;
         }
 
         .pixel-cat-svg {
@@ -367,7 +140,6 @@ export default function PixelCat({
           height: 100%;
           overflow: visible;
           transform-origin: 50% 75%;
-          will-change: transform;
         }
 
         .pixel-cat-speech {
@@ -416,10 +188,6 @@ export default function PixelCat({
           to { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1); }
         }
 
-        .cat-walk .pixel-cat-svg {
-          animation: catWalk 320ms steps(2, end) infinite;
-        }
-
         .cat-jump .pixel-cat-svg {
           animation: catJump 600ms steps(1, end) infinite;
         }
@@ -442,11 +210,6 @@ export default function PixelCat({
           transform-box: fill-box;
           transform-origin: right center;
           animation: catTail 900ms steps(2, end) infinite alternate;
-        }
-
-        @keyframes catWalk {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-2px); }
         }
 
         @keyframes catJump {
@@ -475,15 +238,6 @@ export default function PixelCat({
           from { transform: rotate(-3deg); }
           to { transform: rotate(5deg); }
         }
-
-        // @media (prefers-reduced-motion: reduce) {
-        //   .pixel-cat *,
-        //   .pixel-cat-svg,
-        //   .pixel-cat-eye,
-        //   .pixel-cat-tail {
-        //     animation: none !important;
-        //   }
-        }
       `}</style>
 
       {speechText && (
@@ -491,7 +245,7 @@ export default function PixelCat({
           {speechText}
         </div>
       )}
-      <span ref={facingRef} className="pixel-cat-facing" aria-hidden="true">
+      <span className="pixel-cat-facing" aria-hidden="true">
         <svg
           className="pixel-cat-svg"
           viewBox="0 0 24 18"
@@ -561,6 +315,6 @@ export default function PixelCat({
           <rect x="19" y="12" width="1" height="1" fill="var(--cat-fur)" />
         </svg>
       </span>
-    </button>
+    </div>
   );
 }
