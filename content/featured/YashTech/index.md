@@ -8,11 +8,8 @@ video: 'https://www.youtube.com/embed?listType=user_uploads&list=mighty_programm
 tech:
   - Java
   - Spring Boot
-  - Spring Security
   - React
   - PostgreSQL
-  - WebSocket
-  - STOMP
   - Docker
 ---
 

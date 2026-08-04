@@ -9,11 +9,7 @@ tech:
   - Flask
   - TensorFlow
   - OpenCV
-  - Keras
   - UNet
-  - RestNet
-  - VGG16
-  - scikit-image
   - EfficientNetB4
 ---
 
