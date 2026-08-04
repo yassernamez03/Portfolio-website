@@ -1,7 +1,7 @@
 ---
-date: '2025-07-01'
+date: '2026-12-01'
 title: 'LangChain Technical Documentation Assistant'
-cover: './empty.png'
+cover: './langchain-doc.png'
 github: 'https://github.com/yassernamez03/Langchain-technical-documentation-assistant'
 external: 'https://github.com/yassernamez03/Langchain-technical-documentation-assistant'
 tech:

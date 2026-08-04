@@ -1,5 +1,5 @@
 ---
-date: '2026-03-10'
+date: '2026-12-06'
 title: 'Security Vulnerability Analysis'
 cover: './idfc.png'
 github: 'https://github.com/yassernamez03/Security-Vulnerability-Analysis-Platform-Nautilus'

@@ -1,5 +1,5 @@
 ---
-date: '2024-06-15'
+date: '2026-12-04'
 title: 'Medical Image Detection and Classification'
 cover: './flipkart.png'
 github: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'

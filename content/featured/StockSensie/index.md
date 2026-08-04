@@ -1,5 +1,5 @@
 ---
-date: '2025-11-20'
+date: '2026-12-05'
 title: 'StockSensie - AI Stock Prediction'
 cover: './stocksensie.png'
 github: 'https://github.com/yassernamez03/StockSensie'

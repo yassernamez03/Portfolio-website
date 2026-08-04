@@ -1,7 +1,7 @@
 ---
-date: '2025-07-20'
+date: '2026-12-08'
 title: 'Intelligent Job Application Assistant'
-cover: './empty.png'
+cover: './job-assistant.png'
 github: 'https://github.com/yassernamez03/Intelligent-job-application-Assistant'
 external: 'https://github.com/yassernamez03/Intelligent-job-application-Assistant'
 tech:
