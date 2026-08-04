@@ -29,13 +29,33 @@ const techIconMap = {
   Laravel: 'laravel',
   'Tailwind CSS': 'tailwindcss',
   LangChain: 'langchain',
+  LangGraph: 'langchain',
   TensorFlow: 'tensorflow',
+  Keras: 'keras',
   'Scikit-learn': 'scikitlearn',
   PyTorch: 'pytorch',
   OpenCV: 'opencv',
   'Hugging Face': 'huggingface',
   Nginx: 'nginx',
   GraphQL: 'graphql',
+  Streamlit: 'streamlit',
+  Pandas: 'pandas',
+  'Three.js': 'threedotjs',
+  Gatsby: 'gatsby',
+  'Styled Components': 'styledcomponents',
+  Pytest: 'pytest',
+
+  // AI & ML
+  OpenAI: 'openai',
+  Groq: 'groq',
+  'Deep Learning': 'tensorflow',
+  NLP: 'spacy',
+  LSTM: 'tensorflow',
+  SVM: 'scikitlearn',
+  RAG: 'langchain',
+  UNet: 'tensorflow',
+  EfficientNetB4: 'tensorflow',
+  'AI/ML': 'tensorflow',
 
   // Databases
   PostgreSQL: 'postgresql',
@@ -43,6 +63,8 @@ const techIconMap = {
   MongoDB: 'mongodb',
   Redis: 'redis',
   SQLite: 'sqlite',
+  Supabase: 'supabase',
+  pgvector: 'postgresql',
 
   // DevOps / Cloud
   Docker: 'docker',
@@ -63,6 +85,11 @@ const techIconMap = {
   Odoo: 'odoo',
   Cisco: 'cisco',
   NVIDIA: 'nvidia',
+  'REST API': 'json',
+  'Data Visualization': 'plotly',
+  'Time Series': 'clockify',
+  'Signal Processing': 'scipy',
 };
 
 export default techIconMap;
+

@@ -29,13 +29,33 @@ const techLinks = {
   Laravel: 'https://laravel.com',
   'Tailwind CSS': 'https://tailwindcss.com',
   LangChain: 'https://www.langchain.com',
+  LangGraph: 'https://www.langchain.com/langgraph',
   TensorFlow: 'https://www.tensorflow.org',
+  Keras: 'https://keras.io',
   'Scikit-learn': 'https://scikit-learn.org',
   PyTorch: 'https://pytorch.org',
   OpenCV: 'https://opencv.org',
   'Hugging Face': 'https://huggingface.co',
   Nginx: 'https://nginx.org',
   GraphQL: 'https://graphql.org',
+  Streamlit: 'https://streamlit.io',
+  Pandas: 'https://pandas.pydata.org',
+  'Three.js': 'https://threejs.org',
+  Gatsby: 'https://www.gatsbyjs.com',
+  'Styled Components': 'https://styled-components.com',
+  Pytest: 'https://docs.pytest.org',
+
+  // AI & ML
+  OpenAI: 'https://openai.com',
+  Groq: 'https://groq.com',
+  'Deep Learning': 'https://www.tensorflow.org',
+  NLP: 'https://spacy.io',
+  LSTM: 'https://www.tensorflow.org',
+  SVM: 'https://scikit-learn.org',
+  RAG: 'https://www.langchain.com',
+  UNet: 'https://www.tensorflow.org',
+  EfficientNetB4: 'https://www.tensorflow.org',
+  'AI/ML': 'https://www.tensorflow.org',
 
   // Databases
   PostgreSQL: 'https://www.postgresql.org',
@@ -43,6 +63,8 @@ const techLinks = {
   MongoDB: 'https://www.mongodb.com',
   Redis: 'https://redis.io',
   SQLite: 'https://www.sqlite.org',
+  Supabase: 'https://supabase.com',
+  pgvector: 'https://github.com/pgvector/pgvector',
 
   // DevOps / Cloud
   Docker: 'https://www.docker.com',
@@ -63,6 +85,11 @@ const techLinks = {
   Odoo: 'https://www.odoo.com',
   Cisco: 'https://www.cisco.com',
   NVIDIA: 'https://www.nvidia.com',
+  'REST API': 'https://restfulapi.net',
+  'Data Visualization': 'https://plotly.com',
+  'Time Series': 'https://www.tensorflow.org',
+  'Signal Processing': 'https://scipy.org',
 };
 
 export default techLinks;
+
