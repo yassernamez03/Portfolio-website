@@ -1,6 +1,7 @@
 ---
 date: '2025-07-20'
 title: 'Intelligent Job Application Assistant'
+cover: './empty.png'
 github: 'https://github.com/yassernamez03/Intelligent-job-application-Assistant'
 external: 'https://github.com/yassernamez03/Intelligent-job-application-Assistant'
 tech:

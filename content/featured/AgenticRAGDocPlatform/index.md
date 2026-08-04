@@ -1,6 +1,7 @@
 ---
 date: '2025-08-01'
 title: 'Agentic RAG Documentation Platform'
+cover: './empty.png'
 github: 'https://github.com/yassernamez03/Agentic-RAG-Documentation-Platform'
 external: 'https://github.com/yassernamez03/Agentic-RAG-Documentation-Platform'
 tech:

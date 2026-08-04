@@ -1,6 +1,7 @@
 ---
 date: '2025-06-15'
 title: 'Diabetic Retinopathy Detection App'
+cover: './empty.png'
 github: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
 external: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
 tech:
