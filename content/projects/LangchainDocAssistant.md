@@ -6,10 +6,12 @@ external: 'https://github.com/yassernamez03/Langchain-technical-documentation-as
 tech:
   - Python
   - LangChain
-  - LLM
-  - RAG
+  - Groq
+  - Supabase
+  - pgvector
+  - Streamlit
 company: 'Project'
 showInProjects: true
 ---
 
-AI assistant that answers technical questions by retrieving and reasoning over documentation using LangChain and retrieval-augmented generation (RAG).
+Agentic RAG assistant for querying industrial technical manuals using LangChain tool-calling agents, Hugging Face embeddings, Supabase vector search, and Groq LLMs with dual CLI/Streamlit interfaces.
