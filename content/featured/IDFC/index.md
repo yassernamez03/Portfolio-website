@@ -6,7 +6,6 @@ github: 'https://github.com/yassernamez03/Security-Vulnerability-Analysis-Platfo
 external: 'https://youtu.be/bBSic0XUKp0?si=e9b_BAoA6xS-K2yy'
 video: 'https://www.youtube.com/watch?v=bBSic0XUKp0'
 tech:
-  - Python
   - FastAPI
   - React
   - TypeScript

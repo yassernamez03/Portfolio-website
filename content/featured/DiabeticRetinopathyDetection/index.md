@@ -9,7 +9,6 @@ tech:
   - TensorFlow
   - Flask
   - OpenCV
-  - Deep Learning
   - MongoDB
 company: 'Project'
 showInProjects: true

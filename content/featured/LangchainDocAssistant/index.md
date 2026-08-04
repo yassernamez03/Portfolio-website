@@ -7,7 +7,6 @@ external: 'https://github.com/yassernamez03/Langchain-technical-documentation-as
 tech:
   - Python
   - LangChain
-  - Groq
   - Supabase
   - pgvector
   - Streamlit
