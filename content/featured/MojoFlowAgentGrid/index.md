@@ -14,4 +14,4 @@ company: 'Project'
 showInProjects: true
 ---
 
-MojoFlow Agent Grid is an experimental, multi-tenant AI-agent execution backend designed to run AI workloads as durable, distributed background jobs. It provides an authenticated API with PostgreSQL persistence, Valkey Streams queuing, fenced worker execution leases, OpenAI API integration, and OpenTelemetry observability.
+MojoFlow Agent Grid is a multi-tenant execution backend for running durable, distributed AI workloads. It features PostgreSQL persistence, Valkey Streams queuing, and OpenAI integration.

@@ -1,5 +1,5 @@
 ---
-date: '2026-12-09'
+date: '2026-11-30'
 title: 'Secure Recipe Management System'
 cover: './secure-recipe.png'
 github: 'https://github.com/yassernamez03/Secure-Recipe-Management-System'
@@ -15,4 +15,4 @@ company: 'Project'
 showInProjects: true
 ---
 
-A full-stack recipe management web application featuring multi-factor authentication, administrative management, and AI-assisted content generation. It enables users to securely browse, search, and edit recipes while integrating Groq LLM for AI recipe creation and Pexels for automatic food imagery.
+A full-stack web application for securely managing recipes with multi-factor authentication. Users can seamlessly create content with AI assistance from Groq LLM and Pexels imagery.

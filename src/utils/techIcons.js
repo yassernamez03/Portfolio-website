@@ -90,7 +90,7 @@ const techIconMap = {
   'Data Visualization': 'plotly',
   'Time Series': 'clockify',
   'Signal Processing': 'scipy',
-  Mojo: 'fire',
+  Mojo: 'firebase',
 };
 
 export default techIconMap;
