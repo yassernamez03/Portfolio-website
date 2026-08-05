@@ -79,6 +79,7 @@ const techLinks = {
   'Google Cloud': 'https://cloud.google.com',
   Vercel: 'https://vercel.com',
   Netlify: 'https://www.netlify.com',
+  Prometheus: 'https://prometheus.io',
 
   // Other
   Oracle: 'https://www.oracle.com',
@@ -89,6 +90,7 @@ const techLinks = {
   'Data Visualization': 'https://plotly.com',
   'Time Series': 'https://www.tensorflow.org',
   'Signal Processing': 'https://scipy.org',
+  Mojo: 'https://www.modular.com/mojo',
 };
 
 export default techLinks;

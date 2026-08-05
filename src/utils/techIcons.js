@@ -79,6 +79,7 @@ const techIconMap = {
   'Google Cloud': 'googlecloud',
   Vercel: 'vercel',
   Netlify: 'netlify',
+  Prometheus: 'prometheus',
 
   // Other
   Oracle: 'oracle',
@@ -89,6 +90,7 @@ const techIconMap = {
   'Data Visualization': 'plotly',
   'Time Series': 'clockify',
   'Signal Processing': 'scipy',
+  Mojo: 'fire',
 };
 
 export default techIconMap;
