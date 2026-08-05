@@ -69,6 +69,12 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
   }
 
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   body {
     margin: 0;
     position: relative;
@@ -77,7 +83,9 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background: linear-gradient(135deg, #284b63 0%, #353535 100%);
+    background: linear-gradient(-45deg, #284b63, #353535, #3c6e71);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     background-attachment: fixed;
     color: var(--lightest-slate);
     font-family: var(--font-sans);
