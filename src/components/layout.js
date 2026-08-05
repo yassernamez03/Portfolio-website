@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { Head, Loader, Social, Email, Footer } from '@components';
+import { Head, Loader, Social, Email, Footer, CursorSpotlight } from '@components';
 import { GlobalStyle, theme } from '@styles';
 import PixelCat from '@components/PixelCat';
 
@@ -55,6 +55,7 @@ const Layout = ({ children, location }) => {
       <div id="root">
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <CursorSpotlight />
 
           <a className="skip-to-content" href="#content">
             Skip to Content
