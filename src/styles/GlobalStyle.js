@@ -23,8 +23,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: var(--green);
+    color: var(--white);
   }
 
   /* Provide basic, default focus styles.*/
@@ -77,7 +77,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--navy);
+    background: linear-gradient(135deg, #284b63 0%, #353535 100%);
+    background-attachment: fixed;
     color: var(--lightest-slate);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
