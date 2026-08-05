@@ -46,8 +46,8 @@ const techIconMap = {
   Pytest: 'pytest',
 
   // AI & ML
-  OpenAI: 'robotframework',
-  Groq: 'fastify',
+  OpenAI: 'robotframework/white',
+  Groq: 'fastify/white',
   'Deep Learning': 'tensorflow',
   NLP: 'spacy',
   LSTM: 'tensorflow',
