@@ -3,8 +3,8 @@ date: '2026-12-03'
 title: 'Enterprise ERP Platform'
 cover: './yash.png'
 github: 'https://github.com/yassernamez03/Enterprise-Resource-Planning-Spring-Boot-Application'
-external: 'https://github.com/yassernamez03/Enterprise-Resource-Planning-Spring-Boot-Application'
-video: 'https://www.youtube.com/embed?listType=user_uploads&list=mighty_programmer'
+# external: 'https://github.com/yassernamez03/Enterprise-Resource-Planning-Spring-Boot-Application'
+# video: 'https://www.youtube.com/embed?listType=user_uploads&list=mighty_programmer'
 tech:
   - Java
   - Spring Boot

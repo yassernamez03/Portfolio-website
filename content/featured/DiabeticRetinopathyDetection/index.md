@@ -3,7 +3,7 @@ date: '2026-12-02'
 title: 'Diabetic Retinopathy Detection App'
 cover: './diabetic-retinopathy.png'
 github: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
-external: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
+# external: 'https://github.com/yassernamez03/Diabetic-Retinopathy-Detection-App'
 tech:
   - Python
   - TensorFlow

@@ -3,7 +3,7 @@ date: '2026-12-07'
 title: 'Agentic RAG Documentation Platform'
 cover: './agentic-rag.png'
 github: 'https://github.com/yassernamez03/Agentic-RAG-Documentation-Platform'
-external: 'https://github.com/yassernamez03/Agentic-RAG-Documentation-Platform'
+# external: 'https://github.com/yassernamez03/Agentic-RAG-Documentation-Platform'
 tech:
   - Next.js
   - OpenAI
