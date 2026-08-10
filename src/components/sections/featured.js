@@ -145,6 +145,12 @@ const StyledProject = styled.li`
       height: 100%;
       object-fit: cover;
       vertical-align: middle;
+      filter: blur(3px) brightness(0.85);
+      transition: filter 0.35s ease;
+    }
+
+    &:hover .img {
+      filter: blur(0px) brightness(1);
     }
   }
 `;
